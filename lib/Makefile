@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 14:29:59 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/01 22:59:38 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/01 23:36:07 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,9 @@ OBJECTS = \
 	strb_create_substr.o \
 	strb_delete_substr.o \
 	error.o \
-	ft_lstfind_first.o
+	ft_lstfind_first.o \
+	ft_lstnew_guard.o \
+	ft_malloc_guard.o
 
 $(NAME): $(OBJECTS)
 	ar $(OPTIONS) $@ $^
