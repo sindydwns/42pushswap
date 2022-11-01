@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 17:08:49 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 18:47:25 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
 	if (argc == 1)
 		return 0;
-	t_node	*intlst = parse_integer(argc - 1, argv + 1);
+	t_list	*intlst = parse_integer(argc - 1, argv + 1);
 	// TODO: intlst 중복된 값 체크
 
 	// int i = 1;

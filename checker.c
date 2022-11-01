@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:06:50 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 17:27:46 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 19:01:27 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 static t_ps_func	find_correct_instruction(const char *str)
@@ -33,10 +34,10 @@ static t_ps_func	find_correct_instruction(const char *str)
 	return (NULL);
 }
 
-t_node	*parse_instruction(void)
+t_list	*parse_instruction(void)
 {
-	t_node		*cmdlst;
-	t_node		*new;
+	t_list		*cmdlst;
+	t_list		*new;
 	char		*cmd;
 
 	cmdlst = NULL;
@@ -75,9 +76,9 @@ int	main(int argc, char *argv[])
 {
 	if (argc == 1)
 		return (0);
-	t_node	*intlst = parse_integer(argc - 1, argv + 1);
+	t_list	*intlst = parse_integer(argc - 1, argv + 1);
 	t_solution *ps = solve(intlst, NULL);
-	t_node	*cmdlst = parse_instruction();
+	t_list	*cmdlst = parse_instruction();
 	while (cmdlst)
 	{
 		((t_ps_func)cmdlst->content)(ps);

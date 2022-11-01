@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rank_integer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:57 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 17:08:09 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 18:47:28 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include "push_swap.h"
 
-static int	*find_next_min_node(t_node *intlst, const long prev_min)
+static int	*find_next_min_node(t_list *intlst, const long prev_min)
 {
-	t_node	*res;
+	t_list	*res;
 	long	next_min;
 	int		cur_val;
 
@@ -33,10 +33,10 @@ static int	*find_next_min_node(t_node *intlst, const long prev_min)
 	return ((int *)(res->content));
 }
 
-void rank_integer(t_node *intlst)
+void rank_integer(t_list *intlst)
 {
 	const int	size = ft_lstsize(intlst);
-	t_node		*min_node;
+	t_list		*min_node;
 	int			**ranklst;
 	int			idx;
 

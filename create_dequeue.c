@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   create_dequeue.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:00 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 17:07:02 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 18:47:21 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dequeue	*create_dequeue(t_node *intlst)
+t_dequeue	*create_dequeue(t_list *intlst)
 {
 	t_dequeue	*res;
 	t_elem		*new;

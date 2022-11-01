@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/01 18:19:45 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/01 18:54:21 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIB = ./lib/libft.a
 all: $(NAME)
 
 $(NAME): $(TARGET_OBJS) $(LIB)
-	cc -Wall -Wextra -Werror $(TARGET_OBJS) $(LIB)
+	cc -Wall -Wextra -Werror $(TARGET_OBJS) $(LIB) -I$(dir $(LIB))
 
 clean:
 	rm -f $(TARGET_OBJS)

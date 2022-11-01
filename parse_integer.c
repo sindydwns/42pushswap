@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_integer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:35 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 17:22:13 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 18:47:24 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	*splited_str_to_int(char *str)
 	return (result);
 }
 
-static int	check_duplicate(t_node *intlst, int *needle)
+static int	check_duplicate(t_list *intlst, int *needle)
 {
 	while (intlst)
 	{
@@ -75,13 +75,13 @@ static int	check_duplicate(t_node *intlst, int *needle)
 	return (TRUE);
 }
 
-t_node	*parse_integer(int str_cnt, char *strs[])
+t_list	*parse_integer(int str_cnt, char *strs[])
 {
-	t_node	*intlst;
+	t_list	*intlst;
 	char	**splited_str;
 	int		i;
 	int		j;
-	t_node	*new_node;
+	t_list	*new_node;
 
 	intlst = NULL;
 	i = 0;

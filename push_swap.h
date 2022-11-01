@@ -6,10 +6,11 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 18:35:20 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 18:52:38 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # define TOP 0
@@ -32,6 +33,7 @@
 # define RRR "rrr"
 
 # include <stdlib.h>
+# include "libft.h"
 
 typedef struct s_elem
 {
@@ -62,17 +64,17 @@ typedef struct s_solution
 	struct s_solution	*(*rra)(struct s_solution *ps);
 	struct s_solution	*(*rrb)(struct s_solution *ps);
 	struct s_solution	*(*rrr)(struct s_solution *ps);
-	t_node				*cmdlst;
+	t_list				*cmdlst;
 	size_t				cmdsize;
 }	t_solution;
 
 typedef t_solution	*(*t_ps_func)(t_solution *ps);
 
-t_node		*parse_integer(int str_cnt, char *strs[]);
-void		rank_integer(t_node *intlst);
-t_solution	*solve(t_node *intlst, t_ps_func func);
+t_list		*parse_integer(int str_cnt, char *strs[]);
+void		rank_integer(t_list *intlst);
+t_solution	*solve(t_list *intlst, t_ps_func func);
 t_solution	*find_best_soultion(t_solution *soln_arr, int soln_cnt);
-t_dequeue	*create_dequeue(t_node *intlst);
+t_dequeue	*create_dequeue(t_list *intlst);
 void		destroy_dequeue(t_dequeue *dq);
 
 t_solution	*ps_sandglass(t_solution *ps);
