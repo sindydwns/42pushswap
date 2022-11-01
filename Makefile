@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/01 22:07:00 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/01 22:26:34 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,9 @@ re:
 	make fclean
 	make all
 
-bonus: $(CHECKER_OBJS)
+bonus: $(CHECKER)
+
+$(CHECKER): $(CHECKER_OBJS) $(LIB)
 	cc -Wall -Wextra -Werror $(CHECKER_OBJS) $(LIB) -o $(CHECKER)
 
 test: all bonus

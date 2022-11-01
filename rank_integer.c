@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:57 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 20:52:18 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 22:59:38 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	*find_next_min_node(t_list *intlst, const long prev_min)
 	return ((int *)(res->content));
 }
 
-void rank_integer(t_list *intlst)
+void	rank_integer(t_list *intlst)
 {
 	const int	size = ft_lstsize(intlst);
 	t_list		*min_node;
@@ -42,7 +42,7 @@ void rank_integer(t_list *intlst)
 
 	ranklst = ft_calloc(size, sizeof(int *));
 	if (ranklst == NULL)
-		errorhandling(ERR_MALLOC);
+		error(ERR_MALLOC, FORCE_EXIT);
 	min_node = intlst;
 	idx = 0;
 	while (idx < size)
@@ -61,6 +61,3 @@ void rank_integer(t_list *intlst)
 	}
 	free(ranklst);
 }
-
-
-

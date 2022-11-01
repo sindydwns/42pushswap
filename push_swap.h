@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 22:03:52 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 23:04:35 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@
 # define RRR "rrr"
 # define OK "OK\n"
 # define KO "KO\n"
-# define ERR_MALLOC "malloc fail"
-# define ERR_OUT_OF_RANGE "out of range"
-# define ERR_NOT_DEFINE_CASE "not define case"
-# define ERR_OVERLAP "overlab"
-# define ERR "Error\n"
 # include <stdlib.h>
 # include "libft.h"
 

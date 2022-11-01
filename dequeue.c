@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:09 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 20:54:05 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 22:59:38 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_elem	*newelem(int rank)
 
 	elem = ft_calloc(1, sizeof(t_elem));
 	if (elem == NULL)
-		errorhandling(ERR_MALLOC);
+		error(ERR_MALLOC, FORCE_EXIT);
 	elem->rank = rank;
 	return (elem);
 }

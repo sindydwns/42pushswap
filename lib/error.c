@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_dequeue.c                                   :+:      :+:    :+:   */
+/*   error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 17:07:00 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 22:59:38 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/01 22:18:20 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/01 22:56:51 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <stdlib.h>
+#include "libft.h"
 
-t_dequeue	*create_dequeue(t_list *intlst)
+void	error(char *msg, int force_exit)
 {
-	t_dequeue	*res;
-	t_elem		*new;
-
-	res = ft_calloc(1, sizeof(t_dequeue));
-	if (res == NULL)
-		error(ERR_MALLOC, FORCE_EXIT);
-	while (intlst)
+	if (!HIDE_ERR)
 	{
-		new = newelem(*((int *)(intlst->content)));
-		enqueue(res, BOTTOM, new);
-		intlst = intlst->next;
+		if (REPLACE_ERR)
+			ft_putstr_fd(ERR, 2);
+		else
+			ft_putstr_fd(msg, 2);
 	}
-	return (res);
+	if (force_exit == FORCE_EXIT)
+		exit(1);
 }

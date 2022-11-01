@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 18:47:25 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 22:51:38 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-int main(int argc, char *argv[])
+
+int	main(int argc, char *argv[])
 {
 	if (argc == 1)
-		return 0;
+		return (0);
 	t_list	*intlst = parse_integer(argc - 1, argv + 1);
+	
 	// TODO: intlst 중복된 값 체크
 
 	// int i = 1;

@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:35 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 21:00:21 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 22:59:38 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ps_atoi(char *str)
 		num = (num * 10) + (*str++ - '0');
 		if ((sign == 1 && num > (long)INT_MAX)
 			|| (sign == -1 && num > -(long)INT_MIN))
-			errorhandling("out of integer range");
+			error(ERR_OUT_OF_RANGE, FORCE_EXIT);
 	}
 	return (sign * num);
 }
@@ -51,55 +51,42 @@ static int	is_numstr(char *str)
 	return (TRUE);
 }
 
-static int	*splited_str_to_int(char *str)
+static int	*str_to_int(char *str)
 {
 	int	*result;
 
 	if (is_numstr(str) == FALSE)
-		errorhandling(ERR_OUT_OF_RANGE);
+		error(ERR_OUT_OF_RANGE, FORCE_EXIT);
 	result = malloc(sizeof(int));
 	if (result == NULL)
-		errorhandling(ERR_MALLOC);
+		error(ERR_MALLOC, FORCE_EXIT);
 	*result = ps_atoi(str);
 	return (result);
 }
 
-static int	check_duplicate(t_list *intlst, int *needle)
-{
-	while (intlst)
-	{
-		if (*((int *)intlst->content) == *needle)
-			return (FALSE);
-		intlst = intlst->next;
-	}
-	return (TRUE);
-}
-
 t_list	*parse_integer(int str_cnt, char *strs[])
 {
-	t_list	*intlst;
+	t_list	*res;
 	char	**splited_str;
+	t_list	*new_node;
 	int		i;
 	int		j;
-	t_list	*new_node;
 
-	intlst = NULL;
-	i = 0;
-	while (i < str_cnt)
+	res = NULL;
+	i = -1;
+	while (++i < str_cnt)
 	{
 		splited_str = ft_split(strs[i], ' ');
-		j = 0;
-		while (splited_str[j] != NULL)
+		j = -1;
+		while (splited_str[++j] != NULL)
 		{
-			new_node = ft_lstnew(splited_str_to_int(splited_str[j]));
-			if (check_duplicate(intlst, new_node->content) == FALSE)
-				errorhandling(ERR_OVERLAP);
-			ft_lstadd_back(&intlst, new_node);
+			new_node = ft_lstnew(str_to_int(splited_str[j]));
+			if (ft_lstfind_first(res, new_node->content, sizeof(int)) != NULL)
+				error(ERR_OVERLAB, FORCE_EXIT);
+			ft_lstadd_back(&res, new_node);
 			free(splited_str[j]);
-			j++;
 		}
-		i++;
 		free(splited_str);
 	}
-	return (intlst);
+	return (res);
 }

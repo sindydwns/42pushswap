@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 14:29:59 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/01 20:27:03 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/01 22:59:38 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,8 @@ OBJECTS = \
 	strb_new_node.o \
 	strb_create_substr.o \
 	strb_delete_substr.o \
-	errorhandling.o
+	error.o \
+	ft_lstfind_first.o
 
 $(NAME): $(OBJECTS)
 	ar $(OPTIONS) $@ $^

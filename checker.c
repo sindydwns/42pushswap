@@ -6,11 +6,12 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:06:50 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 20:57:35 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 23:06:11 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "get_next_line.h"
 
 static t_ps_func	find_correct_instruction(const char *str)
 {
@@ -23,12 +24,13 @@ static t_ps_func	find_correct_instruction(const char *str)
 	int						idx;
 
 	if (*str == '\n')
-		errorhandling(ERR_NOT_DEFINE_CASE);
+		error(ERR_NOT_DEFINE_CASE, FORCE_EXIT);
 	idx = -1;
 	while (cmdarr[++idx])
 		if (ft_strncmp(cmdarr[idx], str, ft_strlen(str) - 1) == 0)
 			return (funcarr[idx]);
-	errorhandling(ERR_NOT_DEFINE_CASE);
+	error(ERR_NOT_DEFINE_CASE, FORCE_EXIT);
+	return (NULL);
 }
 
 t_list	*parse_instruction(void)
@@ -43,7 +45,7 @@ t_list	*parse_instruction(void)
 	{
 		new = ft_lstnew(find_correct_instruction(cmd));
 		if (new == NULL)
-			errorhandling(ERR_MALLOC);
+			error(ERR_MALLOC, FORCE_EXIT);
 		free(cmd);
 		ft_lstadd_back(&cmdlst, new);
 		cmd = get_next_line(0);

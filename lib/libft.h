@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:52:51 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 20:26:37 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 23:11:03 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,19 @@
 # define LIBFT_H
 # define FT_SUCCESS 0
 # define FT_ERROR -1
-# define DEBUG_MODE 1
-# include "get_next_line.h"
+
+/* ------------ error.c ------------ */
+# define HIDE_ERR 0
+# define REPLACE_ERR 1
+# define ERR "Error\n"
+# define ERR_MALLOC "malloc fail"
+# define ERR_OUT_OF_RANGE "out of range"
+# define ERR_NOT_DEFINE_CASE "not define case"
+# define ERR_OVERLAB "overlab"
+# define NOT_EXIT 0
+# define FORCE_EXIT 1
+
+# include <stdlib.h>
 
 typedef struct s_list
 {
@@ -76,5 +87,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 t_list	*ft_lstreverse(t_list **lst);
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-void	errorhandling(char *msg);
+void	error(char *msg, int force_exit);
+t_list	*ft_lstfind_first(t_list *lst, void *content, size_t size);
 #endif
