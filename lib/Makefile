@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 14:29:59 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/01 23:36:07 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/02 06:36:31 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ OBJECTS = \
 	ft_lstsize.o \
 	ft_lstlast.o \
 	ft_lstadd_back.o \
+	ft_lstinsert_back.o \
 	ft_lstdelone.o \
 	ft_lstclear.o \
 	ft_lstreverse.o \
@@ -89,9 +90,10 @@ OBJECTS = \
 	strb_create_substr.o \
 	strb_delete_substr.o \
 	error.o \
-	ft_lstfind_first.o \
+	ft_lstreducer.o \
 	ft_lstnew_guard.o \
-	ft_malloc_guard.o
+	ft_malloc_guard.o \
+	ft_calloc_guard.o
 
 $(NAME): $(OBJECTS)
 	ar $(OPTIONS) $@ $^

@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:43 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 18:47:24 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 23:53:42 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ static t_list	*split(t_group *s)
 	// 연결리스트를 받아서 split을 한번 하고 연결리스트 형태로 다시 반환
 
 }
-
-500
-133 134 133
-44 45 44 / 44 46 44 / 44 45 44 
 
 static int	check_group_size(t_list *lst)
 {

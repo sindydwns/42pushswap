@@ -3,15 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/01 22:26:34 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/02 00:41:45 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TARGET = push_swap
 CHECKER = checker
+CFLAGS = -Wall -Wextra -Werror
 OBJS = \
 	parse_integer.o \
 	rank_integer.o \

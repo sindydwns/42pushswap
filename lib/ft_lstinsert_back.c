@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfind_first.c                                 :+:      :+:    :+:   */
+/*   ft_lstinsert_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 22:35:39 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 23:11:05 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/02 06:21:18 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/02 06:35:12 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstfind_first(t_list *lst, void *content, size_t size)
+void	ft_lstinsert_back(t_list **node, t_list *new)
 {
-	while (lst)
+	t_list	*tmp;
+
+	if (new == 0)
+		return ;
+	if (*node == 0)
 	{
-		if (ft_memcmp(lst->content, content, size) == 0)
-			return (lst);
-		lst = lst->next;
+		*node = new;
+		return ;
 	}
-	return (0);
+	tmp = (*node)->next;
+	(*node)->next = new;
+	ft_lstadd_back(&new, tmp);
 }

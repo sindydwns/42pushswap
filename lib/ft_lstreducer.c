@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rank_integer.c                                     :+:      :+:    :+:   */
+/*   ft_lstvisit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 17:07:57 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/02 06:47:28 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/01 22:35:39 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/02 05:00:51 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static t_list	*sort(t_list *acc, t_list *cur)
+void	*ft_lstreducer(t_list *curr, t_cmp_f func, const void *init)
 {
-	t_list	*node;
+	void	*acc;
 
-	node = acc;
-	while (node)
+	acc = (void *)init;
+	while (curr)
 	{
-		if (*(int *)(node->content) < *(int *)(cur->content))
-		node = node->next;
+		acc = func(acc, curr);
+		curr = curr->next;
 	}
 	return (acc);
-}
-
-void	rank_integer(t_list *intlst)
-{
-	t_list		*lst;
-	
-	lst = NULL;
-	lst = ft_lstreducer(intlst, (t_cmp_f)sort, NULL);
-	return (lst);
 }

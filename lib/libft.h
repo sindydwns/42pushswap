@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:52:51 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 23:35:58 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/02 06:36:00 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,7 @@
 # define FORCE_EXIT 1
 
 # include <stdlib.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+# include "types.h"
 
 void	*ft_if(int b, void *p1, void *p2);
 int		ft_max(int a, int b);
@@ -83,12 +78,14 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstinsert_back(t_list **node, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 t_list	*ft_lstreverse(t_list **lst);
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	error(char *msg, int force_exit);
-t_list	*ft_lstfind_first(t_list *lst, void *content, size_t size);
+void	*ft_lstreducer(t_list *lst, t_cmp_f func, const void *init);
 void	*ft_malloc_guard(size_t size);
+void	*ft_calloc_guard(size_t count, size_t size);
 #endif
