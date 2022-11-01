@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lstb_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 02:55:15 by yonshin           #+#    #+#             */
-/*   Updated: 2022/09/13 22:42:40 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 20:26:06 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 t_lstb	*lstb_init(t_lstb *lstb, t_list *list)
 {
-	if (lstb == FT_NULL)
-		return (FT_NULL);
+	if (lstb == 0)
+		return (0);
 	lstb->list = list;
 	lstb->add = lstb_add;
 	lstb->clear = lstb_clear;

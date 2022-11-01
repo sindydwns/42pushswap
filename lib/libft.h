@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:52:51 by yonshin           #+#    #+#             */
-/*   Updated: 2022/09/14 13:29:09 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 20:26:37 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define FT_NULL 0
 # define FT_SUCCESS 0
 # define FT_ERROR -1
-# define FT_TRUE 1
-# define FT_FALSE 0
+# define DEBUG_MODE 1
 # include "get_next_line.h"
 
 typedef struct s_list
@@ -78,4 +76,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 t_list	*ft_lstreverse(t_list **lst);
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	errorhandling(char *msg);
 #endif

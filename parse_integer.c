@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_integer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:35 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 18:47:24 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 21:00:21 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ static int	*splited_str_to_int(char *str)
 	int	*result;
 
 	if (is_numstr(str) == FALSE)
-		errorhandling("input is not a number");
+		errorhandling(ERR_OUT_OF_RANGE);
 	result = malloc(sizeof(int));
 	if (result == NULL)
-		errorhandling("malloc failure");
+		errorhandling(ERR_MALLOC);
 	*result = ps_atoi(str);
 	return (result);
 }
@@ -93,7 +93,7 @@ t_list	*parse_integer(int str_cnt, char *strs[])
 		{
 			new_node = ft_lstnew(splited_str_to_int(splited_str[j]));
 			if (check_duplicate(intlst, new_node->content) == FALSE)
-				errorhandling("duplicated number");
+				errorhandling(ERR_OVERLAP);
 			ft_lstadd_back(&intlst, new_node);
 			free(splited_str[j]);
 			j++;

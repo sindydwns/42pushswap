@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_sandglass.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 17:29:26 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 21:03:04 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	get_direction(t_dequeue *dq, int find)
 	while ((upper->rank != find) && (lower->rank != find))
 	{
 		if (upper == NULL || lower == NULL)
-			errorhandling("get direction failure");
+			errorhandling(ERR_NOT_DEFINE_CASE);
 		upper = upper->down;
 		lower = lower->up;
 		distance++;

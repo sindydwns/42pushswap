@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:06:50 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 19:01:27 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 20:57:35 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ static t_ps_func	find_correct_instruction(const char *str)
 	int						idx;
 
 	if (*str == '\n')
-		return (FALSE);
-	idx = 0;
-	while (cmdarr[idx])
-	{
+		errorhandling(ERR_NOT_DEFINE_CASE);
+	idx = -1;
+	while (cmdarr[++idx])
 		if (ft_strncmp(cmdarr[idx], str, ft_strlen(str) - 1) == 0)
 			return (funcarr[idx]);
-		idx++;
-	}
-	return (NULL);
+	errorhandling(ERR_NOT_DEFINE_CASE);
 }
 
 t_list	*parse_instruction(void)
@@ -45,8 +42,8 @@ t_list	*parse_instruction(void)
 	while (cmd)
 	{
 		new = ft_lstnew(find_correct_instruction(cmd));
-		if (new == NULL || new->content == NULL)
-			errorhandling("checker fail");
+		if (new == NULL)
+			errorhandling(ERR_MALLOC);
 		free(cmd);
 		ft_lstadd_back(&cmdlst, new);
 		cmd = get_next_line(0);
@@ -74,19 +71,23 @@ int	is_sorted(t_solution *ps)
 
 int	main(int argc, char *argv[])
 {
+	t_list		*intlst;
+	t_solution	*ps;
+	t_list		*cmdlst;
+
 	if (argc == 1)
 		return (0);
-	t_list	*intlst = parse_integer(argc - 1, argv + 1);
-	t_solution *ps = solve(intlst, NULL);
-	t_list	*cmdlst = parse_instruction();
+	intlst = parse_integer(argc - 1, argv + 1);
+	ps = solve(intlst, NULL);
+	cmdlst = parse_instruction();
 	while (cmdlst)
 	{
 		((t_ps_func)cmdlst->content)(ps);
 		cmdlst = cmdlst->next;
 	}
 	if (is_sorted(ps) == TRUE)
-		ft_putstr_fd("OK\n", 1);
+		ft_putstr_fd(OK, 1);
 	else
-		ft_putstr_fd("KO\n", 1);
-	return 0;
+		ft_putstr_fd(KO, 1);
+	return (0);
 }

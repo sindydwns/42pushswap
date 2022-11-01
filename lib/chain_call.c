@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chain_call.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:41:39 by yonshin           #+#    #+#             */
-/*   Updated: 2022/09/14 09:06:00 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 20:25:58 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_chain	*chain_call(t_chain *chain, int t, void *f, t_delf del)
 
 	chain->next(chain);
 	chain->freerule[0] = del;
-	res = FT_NULL;
+	res = 0;
 	if (t == CHAIN_MAP)
 		res = chain_iterate(chain, map_factory, (t_mapf)f);
 	if (t == CHAIN_FLAT)

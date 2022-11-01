@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/01 18:54:21 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/01 22:07:00 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+TARGET = push_swap
 CHECKER = checker
 OBJS = \
 	parse_integer.o \
@@ -29,17 +29,24 @@ TARGET_OBJS = $(OBJS) push_swap.o
 CHECKER_OBJS = $(OBJS) checker.o
 LIB = ./lib/libft.a
 
-all: $(NAME)
+all: $(TARGET)
 
-$(NAME): $(TARGET_OBJS) $(LIB)
-	cc -Wall -Wextra -Werror $(TARGET_OBJS) $(LIB) -I$(dir $(LIB))
+$(TARGET): $(TARGET_OBJS) $(LIB)
+	cc -Wall -Wextra -Werror $(TARGET_OBJS) $(LIB) -I$(dir $(LIB)) $(OUTPUT_OPTION)
+
+$(LIB):
+	make -C $(@D)
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(OUTPUT_OPTION) -I$(dir $(LIB)) -c $*.c
 
 clean:
 	rm -f $(TARGET_OBJS)
 	rm -f $(CHECKER_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	make -C $(dir $(LIB)) fclean
+	rm -f $(TARGET)
 	rm -f $(CHECKER)
 
 re: 
@@ -47,17 +54,9 @@ re:
 	make all
 
 bonus: $(CHECKER_OBJS)
-	cc -Wall -Wextra -Werror $(CHECKER_OBJS) $(LIB)
-
-
-#ifndef PROGRAM
-	PROGRAM := $(NAME)
-#endif
-#ifndef SIZE
-	SIZE := 10
-#endif
+	cc -Wall -Wextra -Werror $(CHECKER_OBJS) $(LIB) -o $(CHECKER)
 
 test: all bonus
-	seq $(SIZE) | sort -R | xargs ./$(PROGRAM)
+	seq 500 | sort -R | xargs ./$(TARGET)
 
 .PHONY : all clean fclean re bonus test

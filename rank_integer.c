@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rank_integer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:57 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 18:47:28 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 20:52:18 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void rank_integer(t_list *intlst)
 
 	ranklst = ft_calloc(size, sizeof(int *));
 	if (ranklst == NULL)
-		errorhandling("ranklst malloc failure");
+		errorhandling(ERR_MALLOC);
 	min_node = intlst;
 	idx = 0;
 	while (idx < size)

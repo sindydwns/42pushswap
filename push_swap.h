@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 18:52:38 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 22:03:52 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # define FAILURE 1
 # define TRUE	1
 # define FALSE	0
-
 # define SA "sa"
 # define SB "sb"
 # define SS "ss"
@@ -31,7 +30,13 @@
 # define RRA "rra"
 # define RRB "rrb"
 # define RRR "rrr"
-
+# define OK "OK\n"
+# define KO "KO\n"
+# define ERR_MALLOC "malloc fail"
+# define ERR_OUT_OF_RANGE "out of range"
+# define ERR_NOT_DEFINE_CASE "not define case"
+# define ERR_OVERLAP "overlab"
+# define ERR "Error\n"
 # include <stdlib.h>
 # include "libft.h"
 

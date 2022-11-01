@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   dequeue.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:09 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 17:16:53 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 20:54:05 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+
 #include <string.h>
 #include "push_swap.h"
 
@@ -69,6 +69,8 @@ t_elem	*newelem(int rank)
 	t_elem	*elem;
 
 	elem = ft_calloc(1, sizeof(t_elem));
+	if (elem == NULL)
+		errorhandling(ERR_MALLOC);
 	elem->rank = rank;
 	return (elem);
 }
