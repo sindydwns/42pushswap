@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/02 00:41:45 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/02 06:57:22 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CHECKER = checker
 CFLAGS = -Wall -Wextra -Werror
 OBJS = \
 	parse_integer.o \
-	rank_integer.o \
+	ranking.o \
 	dequeue.o \
 	create_dequeue.o \
 	destroy_dequeue.o \

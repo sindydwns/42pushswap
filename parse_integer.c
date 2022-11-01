@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_integer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:35 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/02 04:42:47 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/02 07:19:28 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_list	*parse_integer(int str_cnt, char *strs[])
 		while (splited_str[++j] != NULL)
 		{
 			new = ft_lstnew_guard(str_to_int(splited_str[j]));
-			if (ft_lstvisit(res, (t_cmp_f)find_equal_value, new) != new)
+			if (ft_lstreducer(res, (t_cmp_f)find_equal_value, new) != new)
 				error(ERR_OVERLAB, FORCE_EXIT);
 			ft_lstadd_back(&res, new);
 			free(splited_str[j]);

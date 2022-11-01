@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 14:29:59 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/02 06:36:31 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/02 06:59:40 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,6 @@ OBJECTS = \
 	ft_lstsize.o \
 	ft_lstlast.o \
 	ft_lstadd_back.o \
-	ft_lstinsert_back.o \
 	ft_lstdelone.o \
 	ft_lstclear.o \
 	ft_lstreverse.o \
