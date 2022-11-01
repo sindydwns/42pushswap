@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 17:26:13 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 18:35:20 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PUSH_SWAP_H
+
 # define PUSH_SWAP_H
 
 # define TOP 0
@@ -30,6 +30,8 @@
 # define RRA "rra"
 # define RRB "rrb"
 # define RRR "rrr"
+
+# include <stdlib.h>
 
 typedef struct s_elem
 {
