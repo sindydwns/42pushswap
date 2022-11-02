@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstb_add.c                                         :+:      :+:    :+:   */
+/*   ft_printf_conv_i_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 03:11:17 by yonshin           #+#    #+#             */
-/*   Updated: 2022/09/13 19:45:12 by yonshin          ###   ########.fr       */
+/*   Created: 2022/09/14 12:59:46 by yonshin           #+#    #+#             */
+/*   Updated: 2022/09/14 12:59:46 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "advlst.h"
+#include "ft_printf_private_bonus.h"
 
-int	lstb_add(t_lstb *lstb, void *content, t_delf del)
+t_substr	*ft_printf_conv_i(t_parsed_token *token, va_list *valst)
 {
-	t_list	*node;
-
-	node = ft_lstnew(content);
-	if (node == 0)
-	{
-		if (del)
-			del(content);
-		return (FT_ERROR);
-	}
-	if (lstb->last)
-		ft_lstadd_back(&(lstb->last), node);
-	else
-		ft_lstadd_back(&(lstb->list), node);
-	lstb->last = node;
-	return (FT_SUCCESS);
+	return (ft_printf_conv_d(token, valst));
 }

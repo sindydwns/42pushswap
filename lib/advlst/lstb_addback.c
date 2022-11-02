@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstb_init.c                                        :+:      :+:    :+:   */
+/*   lstb_addback.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 02:55:15 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 20:26:06 by yonshin          ###   ########.fr       */
+/*   Created: 2022/09/13 03:11:17 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/02 08:22:13 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "advlst.h"
 
-t_lstb	*lstb_init(t_lstb *lstb, t_list *list)
+void	lstb_addback(t_lstb *lstb, t_list *node)
 {
-	if (lstb == 0)
-		return (0);
-	lstb->list = list;
-	lstb->add = lstb_add;
-	lstb->clear = lstb_clear;
-	lstb->last = list;
-	while (lstb->last && lstb->last->next)
-		lstb->last = lstb->last->next;
-	return (lstb);
+	if (node == 0)
+		return ;
+	if (lstb->last)
+		ft_lstadd_back(&(lstb->last), node);
+	else
+		ft_lstadd_back(&(lstb->list), node);
+	lstb->last = ft_lstlast(node);
 }

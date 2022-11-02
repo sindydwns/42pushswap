@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 19:33:58 by yonshin           #+#    #+#             */
-/*   Updated: 2022/09/23 17:20:50 by yonshin          ###   ########.fr       */
+/*   Created: 2022/09/14 12:58:56 by yonshin           #+#    #+#             */
+/*   Updated: 2022/09/14 12:58:59 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 
-char	*ft_strdup(const char *s1)
-{
-	size_t	size;
-	char	*dup;
+int	ft_printf(const char *fmt, ...);
 
-	if (s1 == 0)
-		return (0);
-	size = 0;
-	while (s1[size])
-		size++;
-	dup = (char *)malloc(sizeof(char) * size + 1);
-	if (dup == 0)
-		return (0);
-	size = 0;
-	while (s1[size])
-	{
-		dup[size] = s1[size];
-		size++;
-	}
-	dup[size] = 0;
-	return (dup);
-}
+#endif

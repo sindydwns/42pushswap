@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/02 06:57:10 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/02 07:30:53 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_solution
 typedef t_solution	*(*t_ps_func)(t_solution *ps);
 
 t_list		*parse_integer(int str_cnt, char *strs[]);
-void		ranking(t_list *intlst);
+t_list		*ranking(t_list *intlst);
 t_solution	*solve(t_list *intlst, t_ps_func func);
 t_solution	*find_best_soultion(t_solution *soln_arr, int soln_cnt);
 t_dequeue	*create_dequeue(t_list *intlst);

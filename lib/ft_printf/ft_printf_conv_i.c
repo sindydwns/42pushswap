@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_printf_conv_i.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 06:29:42 by yonshin           #+#    #+#             */
-/*   Updated: 2022/07/12 07:00:37 by yonshin          ###   ########.fr       */
+/*   Created: 2022/08/19 19:50:21 by yonshin           #+#    #+#             */
+/*   Updated: 2022/09/14 10:02:01 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include "ft_printf_private.h"
 
-t_list	*ft_lstnew(void *content)
+t_substr	*ft_printf_conv_i(t_parsed_token *token, va_list *valst)
 {
-	t_list	*node;
-
-	node = (t_list *)malloc(sizeof(t_list));
-	if (node == 0)
-		return (0);
-	node->content = content;
-	node->next = 0;
-	return (node);
+	return (ft_printf_conv_d(token, valst));
 }

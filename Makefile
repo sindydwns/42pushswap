@@ -6,11 +6,11 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/02 06:57:22 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/02 14:46:18 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-TARGET = push_swap
+NAME = push_swap
 CHECKER = checker
 CFLAGS = -Wall -Wextra -Werror
 OBJS = \
@@ -28,12 +28,13 @@ OBJS = \
 	ps_sandglass.o
 TARGET_OBJS = $(OBJS) push_swap.o
 CHECKER_OBJS = $(OBJS) checker.o
-LIB = ./lib/libft.a
+LIB = ./libft/libft.a \
+	./lib/
 
-all: $(TARGET)
+all: $(NAME)
 
-$(TARGET): $(TARGET_OBJS) $(LIB)
-	cc -Wall -Wextra -Werror $(TARGET_OBJS) $(LIB) -I$(dir $(LIB)) $(OUTPUT_OPTION)
+$(NAME): $(TARGET_OBJS) $(LIB)
+	cc $(CFLAGS) $(TARGET_OBJS) $(LIB) -I$(dir $(LIB)) $(OUTPUT_OPTION)
 
 $(LIB):
 	make -C $(@D)
@@ -47,7 +48,7 @@ clean:
 
 fclean: clean
 	make -C $(dir $(LIB)) fclean
-	rm -f $(TARGET)
+	rm -f $(NAME)
 	rm -f $(CHECKER)
 
 re: 
@@ -60,6 +61,6 @@ $(CHECKER): $(CHECKER_OBJS) $(LIB)
 	cc -Wall -Wextra -Werror $(CHECKER_OBJS) $(LIB) -o $(CHECKER)
 
 test: all bonus
-	seq 500 | sort -R | xargs ./$(TARGET)
+	seq 500 | sort -R | xargs ./$(NAME)
 
 .PHONY : all clean fclean re bonus test
