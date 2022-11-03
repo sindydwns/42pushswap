@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   advstr.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:12:16 by yonshin           #+#    #+#             */
-/*   Updated: 2022/09/20 20:35:41 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/03 22:20:32 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ typedef struct s_strb
 	t_list			*last;
 	int				len;
 	int				err;
-	struct s_strb	*(*add_left)(struct s_strb *sb, char *str, t_del del);
-	struct s_strb	*(*add_right)(struct s_strb *sb, char *str, t_del del);
-	struct s_strb	*(*clear)(struct s_strb *sb, char *str, t_del del);
+	struct	s_strb	*(*add_left)(struct s_strb *sb, char *str, t_del del);
+	struct	s_strb	*(*add_right)(struct s_strb *sb, char *str, t_del del);
+	struct	s_strb	*(*clear)(struct s_strb *sb, char *str, t_del del);
 	char			*(*build)(struct s_strb *sb);
 	char			*(*finish)(struct s_strb *sb);
 }	t_strb;

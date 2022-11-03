@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 02:55:15 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/02 08:23:33 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/03 22:33:17 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 t_lstb	*lstb_init(t_lstb *lstb, t_list *list)
 {
-	if (lstb == 0)
-		return (0);
+	if (lstb == NULL)
+		return (NULL);
 	lstb->list = list;
-	lstb->addback = lstb_addback;
+	lstb->add = lstb_add;
 	lstb->clear = lstb_clear;
 	lstb->last = list;
 	while (lstb->last && lstb->last->next)

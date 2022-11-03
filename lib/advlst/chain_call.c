@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:41:39 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/02 08:11:01 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/03 22:33:17 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,53 @@
 
 static t_list	*flat_factory(t_chain *ch, t_list **lst, t_mapf f)
 {
-	return (chain_apply(f, (*lst)->content, ch->param, ch->param_len));
+	t_list	*result;
+	t_list	*next;
+
+	result = chain_apply(f, (*lst)->content, ch->param, ch->param_len);
+	if (result == 0)
+		return (0);
+	next = result;
+	while (next)
+	{
+		if (next->content == 0)
+		{
+			ft_lstclear(&result, ch->freerule[0]);
+			return (0);
+		}
+		next = next->next;
+	}
+	return (result);
 }
 
 static t_list	*map_factory(t_chain *ch, t_list **lst, t_mapf f)
 {
+	t_list	*result;
 	void	*content;
 
 	content = chain_apply(f, (*lst)->content, ch->param, ch->param_len);
-	return (ft_lstnew_guard(content));
+	if (content == 0)
+		return (0);
+	result = ft_lstnew(content);
+	if (result)
+		return (result);
+	ch->freerule[0](content);
+	return (0);
 }
 
 static t_list	*reduce_factory(t_chain *ch, t_list **lst, t_mapf f)
 {
+	t_list	*result;
 	void	*content;
 
 	content = chain_apply(f, lst, ch->param, ch->param_len);
-	return (ft_lstnew_guard(content));
+	if (content == 0)
+		return (0);
+	result = ft_lstnew(content);
+	if (result)
+		return (result);
+	ch->freerule[0](content);
+	return (0);
 }
 
 t_chain	*chain_call(t_chain *chain, int t, void *f, t_delf del)
@@ -40,7 +70,7 @@ t_chain	*chain_call(t_chain *chain, int t, void *f, t_delf del)
 
 	chain->next(chain);
 	chain->freerule[0] = del;
-	res = 0;
+	res = NULL;
 	if (t == CHAIN_MAP)
 		res = chain_iterate(chain, map_factory, (t_mapf)f);
 	if (t == CHAIN_FLAT)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   advlst.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:44:38 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/02 14:22:45 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/09/14 09:07:18 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ typedef struct s_lstb
 {
 	t_list			*list;
 	t_list			*last;
-	void			(*addback)(struct s_lstb *b, t_list *node, t_delf del);
-	void			(*addback_cont)(struct s_lstb *b, void *cont, t_delf del);
+	int				(*add)(struct s_lstb *b, void *content, t_delf del);
 	struct s_lstb	*(*clear)(struct s_lstb *b, t_delf del);
 }	t_lstb;
 
@@ -74,7 +73,6 @@ void	*chain_apply(void *f, void *p, void **params, int len);
 t_chain	*chain_call(t_chain *chain, int t, void *f, t_delf del);
 t_chain	*chain_free(t_chain *chain, int range);
 t_lstb	*lstb_init(t_lstb *lstb, t_list *list);
-void	lstb_addback(t_lstb *lstb, t_list *node);
-void	lstb_addback_content(t_lstb *lstb, void *content);
+int		lstb_add(t_lstb *lstb, void *content, t_delf del);
 t_lstb	*lstb_clear(t_lstb *lstb, t_delf del);
 #endif
