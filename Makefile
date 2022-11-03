@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/03 23:10:46 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/04 02:08:45 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ OBJS = \
 	instruction_rrotate.o \
 	solve.o \
 	create_solution.o \
-	ps_sandglass.o
+	ps_sandglass.o \
+	
 PUSHSWAP_OBJS = $(OBJS) push_swap.o
 CHECKER_OBJS = $(OBJS) checker.o
 LIB = ./lib/libft.a
@@ -33,6 +34,8 @@ LIB = ./lib/libft.a
 INCLUDE = \
 	-I./lib/libft/ \
 	-I./lib/get_next_line/ \
+	-I./lib/advlst/ \
+	-I./lib/exit/ \
 
 all: $(PUSHSWAP)
 
@@ -51,6 +54,7 @@ $(LIB):
 	$(CC) $(CFLAGS) $(OUTPUT_OPTION) $(INCLUDE) -c $*.c
 
 clean:
+	make -C $(dir $(LIB)) clean
 	rm -f $(PUSHSWAP_OBJS)
 	rm -f $(CHECKER_OBJS)
 

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_malloc_guard.c                                  :+:      :+:    :+:   */
+/*   error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 23:33:49 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 23:35:46 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/01 22:18:20 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/01 22:56:51 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include "error.h"
 
-void	*ft_malloc_guard(size_t size)
+void	error(char *msg, int force_exit)
 {
-	void	*res;
-
-	res = malloc(size);
-	if (res == 0)
-		error(ERR_MALLOC, FORCE_EXIT);
-	return (res);
+	if (!HIDE_ERR)
+	{
+		if (REPLACE_ERR)
+			ft_putstr_fd(ERR, 2);
+		else
+			ft_putstr_fd(msg, 2);
+	}
+	if (force_exit == FORCE_EXIT)
+		exit(1);
 }

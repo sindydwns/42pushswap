@@ -6,10 +6,11 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 22:59:38 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 01:48:09 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "error.h"
 #include "push_swap.h"
 
 static int	get_direction(t_dequeue *dq, int find)

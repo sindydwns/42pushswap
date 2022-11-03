@@ -6,11 +6,12 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:09 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 22:59:38 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 01:53:26 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include "error.h"
 #include "push_swap.h"
 
 void	enqueue(t_dequeue *dq, int edge, t_elem *new)

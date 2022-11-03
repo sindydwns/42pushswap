@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   advlst.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:44:38 by yonshin           #+#    #+#             */
-/*   Updated: 2022/09/14 09:07:18 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 01:50:10 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef void	*(*t_mapf1)(void *content);
 typedef void	*(*t_mapf2)(void *content, void *p2);
 typedef void	*(*t_mapf3)(void *content, void *p2, void *p3);
 typedef void	*(*t_mapf4)(void *content, void *p2, void *p3, void *p4);
+typedef t_mapf2	t_cmp_f;
 typedef struct s_chain
 {
 	t_list			*prev;
@@ -75,4 +76,5 @@ t_chain	*chain_free(t_chain *chain, int range);
 t_lstb	*lstb_init(t_lstb *lstb, t_list *list);
 int		lstb_add(t_lstb *lstb, void *content, t_delf del);
 t_lstb	*lstb_clear(t_lstb *lstb, t_delf del);
+void	*lst_reduce(t_list *curr, t_cmp_f func, const void *init);
 #endif

@@ -6,26 +6,27 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/02 07:47:44 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 01:55:22 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "error.h"
 #include "advlst.h"
 
 int	main(int argc, char *argv[])
 {
 	t_list	*input;
 	t_list	*algorithms;
-	t_list	*next;
+	// t_list	*next;
 	t_chain	ch;
 
 	if (argc == 1)
 		return (0);
 	input = ranking(parse_integer(argc - 1, argv + 1));
-	ft_lstadd_front(&algorithms, ft_lstnew_guard(ps_sandglass));
+	ft_lstadd_front(&algorithms, lstnew_guard(ps_sandglass));
 	chain_init(&ch, algorithms, CONTENT_NO_FREE);
-	chain_call($ch, );
+	// chain_call($ch, );
 
 	
 	// ft_lstadd_front(&algorithms, ft_lstnew_guard(ps_triangle_merge));

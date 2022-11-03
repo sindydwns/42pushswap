@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchri.c                                       :+:      :+:    :+:   */
+/*   lstnew_guard.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 04:03:22 by yonshin           #+#    #+#             */
-/*   Updated: 2022/09/14 04:32:59 by yonshin          ###   ########.fr       */
+/*   Created: 2022/07/12 06:29:42 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/04 01:39:11 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "error.h"
 
-int	ft_strchri(const char *s, int c)
+t_list	*lstnew_guard(void *content)
 {
-	char	*found;
+	t_list	*node;
 
-	found = ft_strchr(s, c);
-	if (found)
-		return (found - s);
-	return (-1);
+	node = ft_lstnew(content);
+	if (node == 0)
+		error(ERR_MALLOC, FORCE_EXIT);
+	return (node);
 }

@@ -6,12 +6,14 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:35 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/02 07:19:28 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 02:01:40 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include "push_swap.h"
+#include "advlst.h"
+#include "error.h"
 
 static int	ps_atoi(char *str)
 {
@@ -57,7 +59,7 @@ static int	*str_to_int(char *str)
 
 	if (is_numstr(str) == FALSE)
 		error(ERR_OUT_OF_RANGE, FORCE_EXIT);
-	result = ft_malloc_guard(sizeof(int));
+	result = malloc_guard(sizeof(int));
 	*result = ps_atoi(str);
 	return (result);
 }
@@ -85,8 +87,8 @@ t_list	*parse_integer(int str_cnt, char *strs[])
 		j = -1;
 		while (splited_str[++j] != NULL)
 		{
-			new = ft_lstnew_guard(str_to_int(splited_str[j]));
-			if (ft_lstreducer(res, (t_cmp_f)find_equal_value, new) != new)
+			new = lstnew_guard(str_to_int(splited_str[j]));
+			if (lst_reduce(res, (t_cmp_f)find_equal_value, new) != new)
 				error(ERR_OVERLAB, FORCE_EXIT);
 			ft_lstadd_back(&res, new);
 			free(splited_str[j]);

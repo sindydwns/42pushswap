@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc_guard.c                                  :+:      :+:    :+:   */
+/*   lst_reduce.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 23:58:51 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/02 00:01:40 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/04 01:13:15 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/04 01:50:15 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include "advlst.h"
 
-void	*ft_calloc_guard(size_t count, size_t size)
+void	*lst_reduce(t_list *curr, t_cmp_f func, const void *init)
 {
-	void	*tmp;
+	void	*acc;
 
-	tmp = ft_calloc(count, size);
-	if (tmp == 0)
-		error(ERR_MALLOC, FORCE_EXIT);
-	return (tmp);
+	acc = (void *)init;
+	while (curr)
+	{
+		acc = func(acc, curr);
+		curr = curr->next;
+	}
+	return (acc);
 }

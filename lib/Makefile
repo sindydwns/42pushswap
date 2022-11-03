@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 14:29:59 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/03 23:11:34 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/04 02:08:12 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,19 +64,39 @@ GNL = \
 	./get_next_line/get_next_line_utils.o \
 	./get_next_line/get_next_line.o \
 
-HEADER = \
-	./libft/ \
-	./get_next_line/ \
+EXIT = \
+	./exit/error.o \
+	./exit/lstnew_guard.o \
+	./exit/malloc_guard.o \
 
-OBJECTS = $(LIBFT) $(GNL)
+ADVLST = \
+	./advlst/chain_apply.o \
+	./advlst/chain_call.o \
+	./advlst/chain_free.o \
+	./advlst/chain_init.o \
+	./advlst/chain_iterate.o \
+	./advlst/chain_next.o \
+	./advlst/chain_param.o \
+	./advlst/lst_reduce.o \
+	./advlst/lstb_add.o \
+	./advlst/lstb_clear.o \
+	./advlst/lstb_init.o \
+
+HEADER = \
+	-I./libft/ \
+	-I./get_next_line/ \
+	-I./advlst/ \
+	-I./error/ \
+
+OBJECTS = $(LIBFT) $(GNL) $(EXIT) $(ADVLST)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar $(ARFLAGS) $@ $^
 
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) $(OUTPUT_OPTION) $(addprefix -I, $(HEADER)) -c $*.c
+%.o: %.c
+	$(CC) $(CFLAGS) $(OUTPUT_OPTION) $(HEADER) -c $*.c
 
 clean:
 	rm -f $(OBJECTS)

@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:52:51 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/03 22:24:43 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 02:00:33 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,6 @@
 # define LIBFT_H
 # define FT_SUCCESS 0
 # define FT_ERROR -1
-
-/* ------------ error.c ------------ */
-# define HIDE_ERR 0
-# define REPLACE_ERR 1
-# define ERR "Error\n"
-# define ERR_MALLOC "malloc fail"
-# define ERR_OUT_OF_RANGE "out of range"
-# define ERR_NOT_DEFINE_CASE "not define case"
-# define ERR_OVERLAB "overlab"
-# define NOT_EXIT 0
-# define FORCE_EXIT 1
 
 # include <stdlib.h>
 

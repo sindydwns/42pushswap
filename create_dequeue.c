@@ -6,10 +6,11 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:00 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 22:59:38 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 01:53:38 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "error.h"
 #include "push_swap.h"
 
 t_dequeue	*create_dequeue(t_list *intlst)
