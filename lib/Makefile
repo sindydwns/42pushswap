@@ -6,12 +6,12 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 14:29:59 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/04 02:08:12 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/04 02:18:56 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ARFLAGS = rc
-NAME = libft.a
+NAME = liball.a
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = \
 	./libft/ft_atoi.o \
@@ -70,13 +70,6 @@ EXIT = \
 	./exit/malloc_guard.o \
 
 ADVLST = \
-	./advlst/chain_apply.o \
-	./advlst/chain_call.o \
-	./advlst/chain_free.o \
-	./advlst/chain_init.o \
-	./advlst/chain_iterate.o \
-	./advlst/chain_next.o \
-	./advlst/chain_param.o \
 	./advlst/lst_reduce.o \
 	./advlst/lstb_add.o \
 	./advlst/lstb_clear.o \
