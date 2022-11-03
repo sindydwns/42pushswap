@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 14:29:59 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/04 02:18:56 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/04 03:12:06 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,10 +70,13 @@ EXIT = \
 	./exit/malloc_guard.o \
 
 ADVLST = \
-	./advlst/lst_reduce.o \
-	./advlst/lstb_add.o \
+	./advlst/lstb_addback.o \
+	./advlst/lstb_addfront.o \
+	./advlst/lstb_clear_prev.o \
 	./advlst/lstb_clear.o \
 	./advlst/lstb_init.o \
+	./advlst/lstb_reduce.o \
+	./advlst/lst_reduce.o \
 
 HEADER = \
 	-I./libft/ \

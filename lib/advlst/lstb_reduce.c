@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstb_init.c                                        :+:      :+:    :+:   */
+/*   lstb_reduce.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 02:55:15 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 03:05:55 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/04 01:13:15 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/04 03:33:12 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "advlst.h"
 
-t_lstb	*lstb_init(t_lstb *lstb, t_list *list)
+t_lstb	*lstb_reduce(t_lstb *lstb, t_reduce_f func, t_list *init)
 {
-	if (lstb == NULL)
-		return (NULL);
-	lstb->list = list;
-	lstb->addback = lstb_addback;
-	lstb->addfront = lstb_addfront;
-	lstb->clear = lstb_clear;
-	lstb->clear_prev = lstb_clear_prev;
-	lstb->reduce = lstb_reduce;
-	lstb->last = ft_lstlast(list);
-	lstb->prev = NULL;
+	lstb->prev = lstb->list;
+	lstb->list = lst_reduce(lstb->list, (t_cmp_f)func, init);
+	lstb->last = ft_lstlast(lstb->list);
 	return (lstb);
 }

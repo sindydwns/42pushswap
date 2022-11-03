@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 01:47:33 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 04:43:52 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ typedef struct s_solution
 	size_t				cmdsize;
 }	t_solution;
 
-typedef t_solution	*(*t_ps_func)(t_solution *ps);
+typedef t_solution	*(*t_solve_f)(t_solution *ps);
 
 t_list		*parse_integer(int str_cnt, char *strs[]);
 t_list		*ranking(t_list *intlst);
-t_solution	*solve(t_list *intlst, t_ps_func func);
-t_solution	*find_best_soultion(t_solution *soln_arr, int soln_cnt);
+t_solution	*solve(t_list *intlst, t_solve_f func);
+t_solution	*find_best_solution(t_list *solutions);
 t_dequeue	*create_dequeue(t_list *intlst);
 void		destroy_dequeue(t_dequeue *dq);
 
@@ -95,5 +95,6 @@ t_solution	*rra(t_solution *ps);
 t_solution	*rrb(t_solution *ps);
 t_solution	*rrr(t_solution *ps);
 t_solution	*create_solution(t_dequeue *a, t_dequeue *b);
+void		destroy_solution(t_solution *solution);
 
 #endif

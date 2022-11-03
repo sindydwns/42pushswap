@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/04 02:14:28 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/04 04:40:50 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ OBJS = \
 	instruction_rrotate.o \
 	solve.o \
 	create_solution.o \
+	destroy_solution.o \
 	ps_sandglass.o \
 	
 PUSHSWAP_OBJS = $(OBJS) push_swap.o

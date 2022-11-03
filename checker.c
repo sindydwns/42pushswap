@@ -6,19 +6,20 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:06:50 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 23:06:11 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 03:50:10 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "error.h"
 #include "push_swap.h"
 #include "get_next_line.h"
 
-static t_ps_func	find_correct_instruction(const char *str)
+static t_solve_f	find_correct_instruction(const char *str)
 {
 	static const char		*cmdarr[] = {
 		SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR, NULL
 	};
-	static const t_ps_func	funcarr[] = {
+	static const t_solve_f	funcarr[] = {
 		sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr, NULL
 	};
 	int						idx;
@@ -84,7 +85,7 @@ int	main(int argc, char *argv[])
 	cmdlst = parse_instruction();
 	while (cmdlst)
 	{
-		((t_ps_func)cmdlst->content)(ps);
+		((t_solve_f)cmdlst->content)(ps);
 		cmdlst = cmdlst->next;
 	}
 	if (is_sorted(ps) == TRUE)
