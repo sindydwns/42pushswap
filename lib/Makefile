@@ -6,13 +6,13 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 14:29:59 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/04 03:12:06 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/04 14:36:38 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ARFLAGS = rc
 NAME = liball.a
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror $(DEBUG)
 LIBFT = \
 	./libft/ft_atoi.o \
 	./libft/ft_bzero.o \
@@ -103,4 +103,7 @@ fclean: clean
 re: fclean
 	make all
 
-.PHONY: all bonus clean fclean re
+debug:
+	make DEBUG='-g' re
+
+.PHONY: all bonus clean fclean re debug

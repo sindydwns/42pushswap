@@ -6,14 +6,14 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 06:35:52 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/02 11:48:16 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 14:01:15 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, t_func_1 f, t_action_1 del)
 {
 	t_list	*result;
 	t_list	*last;

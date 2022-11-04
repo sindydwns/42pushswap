@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 04:43:52 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 13:51:01 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ typedef t_solution	*(*t_solve_f)(t_solution *ps);
 t_list		*parse_integer(int str_cnt, char *strs[]);
 t_list		*ranking(t_list *intlst);
 t_solution	*solve(t_list *intlst, t_solve_f func);
-t_solution	*find_best_solution(t_list *solutions);
 t_dequeue	*create_dequeue(t_list *intlst);
 void		destroy_dequeue(t_dequeue *dq);
 

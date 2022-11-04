@@ -6,13 +6,13 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/04 04:40:50 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/04 14:38:47 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PUSHSWAP = push_swap
 CHECKER = checker
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 OBJS = \
 	parse_integer.o \
 	ranking.o \
@@ -68,7 +68,10 @@ re:
 	make fclean
 	make all
 
+debug:
+	make DEBUG='-g' re
+
 test: all bonus
 	seq 500 | sort -R | xargs ./$(PUSHSWAP)
 
-.PHONY : all clean fclean re bonus test
+.PHONY : all clean fclean re bonus test debug
