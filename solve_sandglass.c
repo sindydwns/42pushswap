@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sandglass.c                                     :+:      :+:    :+:   */
+/*   solve_sandglass.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 01:48:09 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 17:09:31 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,37 +38,47 @@ static int	get_direction(t_dequeue *dq, int find)
 		return (-distance);
 }
 
-t_solution	*ps_sandglass(t_solution *ps)
+static void	a_to_b(t_solution *solution)
 {
 	int	chunk;
 	int	i;
 
 	chunk = 30;
 	i = 1;
-	while (ps->a->size > 0)
+	while (solution->a->size > 0)
 	{
-		if (ps->a->p[TOP]->rank < i + chunk)
+		if (solution->a->p[TOP]->rank < i + chunk)
 		{
-			pb(ps);
-			if (ps->b->p[TOP]->rank < i)
-				rb(ps);
+			pb(solution);
+			if (solution->b->p[TOP]->rank < i)
+				rb(solution);
 			i++;
 		}
 		else
 		{
-			ra(ps);
+			ra(solution);
 		}
 	}
-	while (ps->b->size != 0)
+}
+
+static void	b_to_a(t_solution *solution)
+{
+	while (solution->b->size != 0)
 	{
-		while (ps->b->p[TOP]->rank != (int)ps->b->size)
+		while (solution->b->p[TOP]->rank != (int)solution->b->size)
 		{
-			if (get_direction(ps->b, ps->b->size) > 0)
-				rb(ps);
+			if (get_direction(solution->b, solution->b->size) > 0)
+				rb(solution);
 			else
-				rrb(ps);
+				rrb(solution);
 		}
-		pa(ps);
+		pa(solution);
 	}
-	return (ps);
+}
+
+t_solution	*solve_sandglass(t_solution *solution)
+{
+	a_to_b(solution);
+	b_to_a(solution);
+	return (solution);
 }

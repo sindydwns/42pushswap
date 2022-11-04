@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:06:50 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 13:50:55 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 17:11:20 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,6 @@ t_list	*parse_instruction(void)
 		cmd = get_next_line(0);
 	}
 	return (cmdlst);
-}
-
-int	is_sorted(t_solution *ps)
-{
-	t_elem	*elem;
-
-	if (ps->b->size > 0)
-		return (FALSE);
-	if (ps->elemsize != ps->a->size)
-		return (FALSE);
-	elem = ps->a->p[TOP];
-	while (elem->down)
-	{
-		if (elem->rank >= elem->down->rank)
-			return (FALSE);
-		elem = elem->down;
-	}
-	return (TRUE);
 }
 
 int	main(int argc, char *argv[])

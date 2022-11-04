@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_best_solution.c                               :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 04:44:03 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 04:48:53 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/04 16:05:13 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/04 16:05:37 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_solution	*find_best_solution(t_list *solution)
+int	is_sorted(t_solution *ps)
 {
-	t_list	*best;
-	int		best_cmd_size;
-	int		curr_cmd_size;
+	t_elem	*elem;
 
-	if (solution == NULL)
-		return ;
-	best = solution;
-	while (solution)
+	if (ps->b->size > 0)
+		return (FALSE);
+	if (ps->elemsize != ps->a->size)
+		return (FALSE);
+	elem = ps->a->p[TOP];
+	while (elem->down)
 	{
-		best_cmd_size = ((t_solution *)best->content)->cmdsize;
-		curr_cmd_size = ((t_solution *)solution->content)->cmdsize;
-		if (best_cmd_size > curr_cmd_size)
-		solution = solution->next;
+		if (elem->rank >= elem->down->rank)
+			return (FALSE);
+		elem = elem->down;
 	}
+	return (TRUE);
 }

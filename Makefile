@@ -6,27 +6,28 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/04 14:38:47 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/04 17:10:37 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PUSHSWAP = push_swap
 CHECKER = checker
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 OBJS = \
-	parse_integer.o \
-	ranking.o \
 	dequeue.o \
 	create_dequeue.o \
 	destroy_dequeue.o \
+	parse_integer.o \
+	ranking.o \
 	instruction_push.o \
 	instruction_swap.o \
 	instruction_rotate.o \
 	instruction_rrotate.o \
 	solve.o \
+	solve_sandglass.o \
 	create_solution.o \
 	destroy_solution.o \
-	ps_sandglass.o \
+	is_sorted.o \
 	
 PUSHSWAP_OBJS = $(OBJS) push_swap.o
 CHECKER_OBJS = $(OBJS) checker.o
@@ -72,6 +73,6 @@ debug:
 	make DEBUG='-g' re
 
 test: all bonus
-	seq 500 | sort -R | xargs ./$(PUSHSWAP)
+	@echo $(shell ARG=$$(seq $(SIZE) | sort -R | tr "\n" " "); ./push_swap $$ARG | wc -l; ./push_swap $$ARG | ./checker $$ARG;)
 
 .PHONY : all clean fclean re bonus test debug

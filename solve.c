@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:08:11 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 03:50:35 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 16:10:48 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_solution	*solve(t_list *intlst, t_solve_f solve_func)
 	result = create_solution(a, b);
 	if (result == NULL)
 		error(ERR_MALLOC, FORCE_EXIT);
+	if (is_sorted(result))
+		return (result);
 	if (solve_func != NULL)
 		solve_func(result);
 	return (result);

@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 13:51:01 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 17:13:25 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_solution	*solve(t_list *intlst, t_solve_f func);
 t_dequeue	*create_dequeue(t_list *intlst);
 void		destroy_dequeue(t_dequeue *dq);
 
-t_solution	*ps_sandglass(t_solution *ps);
+t_solution	*solve_sandglass(t_solution *ps);
 t_solution	*ps_triangle_merge(t_solution *ps);
 void		enqueue(t_dequeue *dq, int edge, t_elem *new);
 t_elem		*dequeue(t_dequeue *dq, int edge);
@@ -95,5 +95,6 @@ t_solution	*rrb(t_solution *ps);
 t_solution	*rrr(t_solution *ps);
 t_solution	*create_solution(t_dequeue *a, t_dequeue *b);
 void		destroy_solution(t_solution *solution);
+int			is_sorted(t_solution *ps);
 
 #endif
