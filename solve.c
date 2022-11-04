@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:08:11 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 16:10:48 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 17:27:19 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_solution	*solve(t_list *intlst, t_solve_f solve_func)
 {
 	t_dequeue	*a;
 	t_dequeue	*b;
-	t_solution	*result;
+	t_solution	*solution;
+	t_solution	*res;
 
 	a = create_dequeue(intlst);
 	if (a == NULL)
@@ -25,12 +26,14 @@ t_solution	*solve(t_list *intlst, t_solve_f solve_func)
 	b = create_dequeue(NULL);
 	if (b == NULL)
 		error(ERR_MALLOC, FORCE_EXIT);
-	result = create_solution(a, b);
-	if (result == NULL)
+	solution = create_solution(a, b);
+	if (solution == NULL)
 		error(ERR_MALLOC, FORCE_EXIT);
-	if (is_sorted(result))
-		return (result);
+	if (is_sorted(solution))
+		return (solution);
 	if (solve_func != NULL)
-		solve_func(result);
-	return (result);
+		res = solve_func(solution);
+	if (res == NULL)
+		destroy_solution(solution);
+	return (res);
 }

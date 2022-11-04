@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/04 17:10:37 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/04 17:23:47 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,10 @@ OBJS = \
 	instruction_rrotate.o \
 	solve.o \
 	solve_sandglass.o \
+	solve_hardcode2.o \
+	solve_hardcode3.o \
+	solve_hardcode4.o \
+	solve_hardcode5.o \
 	create_solution.o \
 	destroy_solution.o \
 	is_sorted.o \

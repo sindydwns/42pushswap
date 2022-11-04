@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 17:13:25 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/04 17:25:31 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ t_dequeue	*create_dequeue(t_list *intlst);
 void		destroy_dequeue(t_dequeue *dq);
 
 t_solution	*solve_sandglass(t_solution *ps);
-t_solution	*ps_triangle_merge(t_solution *ps);
+t_solution	*solve_hardcode2(t_solution *ps);
+t_solution	*solve_hardcode3(t_solution *ps);
+t_solution	*solve_hardcode4(t_solution *ps);
+t_solution	*solve_hardcode5(t_solution *ps);
 void		enqueue(t_dequeue *dq, int edge, t_elem *new);
 t_elem		*dequeue(t_dequeue *dq, int edge);
 t_elem		*newelem(int rank);
