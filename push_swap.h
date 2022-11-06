@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 17:25:31 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/05 14:26:29 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define TOP 0
 # define BOTTOM 1
 # define SUCCESS 0
-# define FAILURE 1
+# define FAILURE -1
 # define TRUE	1
 # define FALSE	0
 # define SA "sa"
@@ -100,4 +100,13 @@ t_solution	*create_solution(t_dequeue *a, t_dequeue *b);
 void		destroy_solution(t_solution *solution);
 int			is_sorted(t_solution *ps);
 
+/* data utils */
+int	atop(t_solution *s, size_t idx);
+int	abot(t_solution *s, size_t idx);
+int	btop(t_solution *s, size_t idx);
+int	bbot(t_solution *s, size_t idx);
+int	amax(t_solution *s);
+int	amin(t_solution *s);
+int	bmax(t_solution *s);
+int	bmin(t_solution *s);
 #endif

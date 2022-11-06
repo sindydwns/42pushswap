@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:06:50 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 17:11:20 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 01:13:22 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		return (0);
 	intlst = parse_integer(argc - 1, argv + 1);
-	ps = solve(intlst, NULL);
+	ps = create_solution(create_dequeue(intlst), create_dequeue(NULL));
 	cmdlst = parse_instruction();
 	while (cmdlst)
 	{

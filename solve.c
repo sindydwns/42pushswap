@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:08:11 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 17:27:19 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 01:13:30 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,17 @@
 
 t_solution	*solve(t_list *intlst, t_solve_f solve_func)
 {
-	t_dequeue	*a;
-	t_dequeue	*b;
-	t_solution	*solution;
 	t_solution	*res;
 
-	a = create_dequeue(intlst);
-	if (a == NULL)
-		error(ERR_MALLOC, FORCE_EXIT);
-	b = create_dequeue(NULL);
-	if (b == NULL)
-		error(ERR_MALLOC, FORCE_EXIT);
-	solution = create_solution(a, b);
-	if (solution == NULL)
-		error(ERR_MALLOC, FORCE_EXIT);
-	if (is_sorted(solution))
-		return (solution);
-	if (solve_func != NULL)
-		res = solve_func(solution);
-	if (res == NULL)
-		destroy_solution(solution);
+	if (solve_func == NULL)
+		return (NULL);
+	res = create_solution(create_dequeue(intlst), create_dequeue(NULL));
+	if (is_sorted(res))
+		return (res);
+	if (solve_func(res) == NULL || is_sorted(res) == FALSE)
+	{
+		destroy_solution(res);
+		return (NULL);
+	}
 	return (res);
 }

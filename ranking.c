@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ranking.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:57 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 01:53:08 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:41:37 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,16 @@ t_list	*ranking(t_list *intlst)
 {
 	t_list	*lst;
 	int		rank;
+	t_list	*tmp;
 
 	lst = lst_reduce(intlst, (t_cmp_f)sort_content, NULL);
 	rank = 0;
 	while (lst)
 	{
 		*(int *)(lst->content) = ++rank;
+		tmp = lst->next;
 		free(lst);
-		lst = lst->next;
+		lst = tmp;
 	}
 	return (intlst);
 }

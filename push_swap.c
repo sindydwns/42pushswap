@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 17:13:19 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/05 14:29:07 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ int	main(int argc, char *argv[])
 {
 	const t_solve_f	algorithms[] = {
 		solve_sandglass,
+		solve_hardcode2,
+		solve_hardcode3,
+		solve_hardcode4,
+		solve_hardcode5,
 		NULL
 	};
 	t_list			*inputs;

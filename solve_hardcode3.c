@@ -3,19 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   solve_hardcode3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 17:21:34 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/05 14:25:20 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "error.h"
 #include "push_swap.h"
 
-t_solution	*solve_hardcode3(t_solution *solution)
+t_solution	*solve_hardcode3(t_solution *s)
 {
-	if (solution->a->size != 3)
-		return (solution);
-	return (solution);
+	int	max;
+
+	if (s->a->size != 3)
+		return (NULL);
+	max = amax(s);
+	if (atop(s, 0) == max)
+		ra(s);
+	if (atop(s, 1) == max)
+		rra(s);
+	if (atop(s, 0) > atop(s, 1))
+		sa(s);
+	return (s);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/04 17:23:47 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/07 00:46:31 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@ OBJS = \
 	create_solution.o \
 	destroy_solution.o \
 	is_sorted.o \
+	data_utils1.o \
+	data_utils2.o \
 	
 PUSHSWAP_OBJS = $(OBJS) push_swap.o
 CHECKER_OBJS = $(OBJS) checker.o
@@ -48,16 +50,16 @@ all: $(PUSHSWAP)
 bonus: $(CHECKER)
 
 $(PUSHSWAP): $(PUSHSWAP_OBJS) $(LIB)
-	$(CC) $(CFLAGS) $(PUSHSWAP_OBJS) $(LIB) $(OUTPUT_OPTION)
+	$(CC) $(CFLAGS) $(PUSHSWAP_OBJS) $(LIB) $(DEBUG) $(OUTPUT_OPTION)
 
 $(CHECKER): $(CHECKER_OBJS) $(LIB)
-	$(CC) $(CFLAGS) $(CHECKER_OBJS) $(LIB) $(OUTPUT_OPTION)
+	$(CC) $(CFLAGS) $(CHECKER_OBJS) $(LIB) $(DEBUG) $(OUTPUT_OPTION)
 
 $(LIB):
 	make -C $(@D)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(OUTPUT_OPTION) $(INCLUDE) -c $*.c
+	$(CC) $(CFLAGS) $(OUTPUT_OPTION) $(INCLUDE) $(DEBUG) -c $*.c
 
 clean:
 	make -C $(dir $(LIB)) clean
@@ -74,7 +76,8 @@ re:
 	make all
 
 debug:
-	make DEBUG='-g' re
+	make DEBUG='-g -fsanitize=address' re
+	make DEBUG='-g -fsanitize=address' $(CHECKER)
 
 test: all bonus
 	@echo $(shell ARG=$$(seq $(SIZE) | sort -R | tr "\n" " "); ./push_swap $$ARG | wc -l; ./push_swap $$ARG | ./checker $$ARG;)
