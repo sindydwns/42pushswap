@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/07 00:46:31 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/07 08:03:32 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,5 +81,12 @@ debug:
 
 test: all bonus
 	@echo $(shell ARG=$$(seq $(SIZE) | sort -R | tr "\n" " "); ./push_swap $$ARG | wc -l; ./push_swap $$ARG | ./checker $$ARG;)
+
+bench: all bonus
+	@for i in $(shell seq $(REPEAT)); do \
+		make test >> testfile; \
+	done
+	cat testfile
+	@rm testfile
 
 .PHONY : all clean fclean re bonus test debug
