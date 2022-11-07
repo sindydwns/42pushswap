@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/07 08:03:32 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/07 09:38:26 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,11 +82,16 @@ debug:
 test: all bonus
 	@echo $(shell ARG=$$(seq $(SIZE) | sort -R | tr "\n" " "); ./push_swap $$ARG | wc -l; ./push_swap $$ARG | ./checker $$ARG;)
 
-bench: all bonus
+benchmark: all bonus
+	@touch testfile
 	@for i in $(shell seq $(REPEAT)); do \
 		make test >> testfile; \
 	done
-	cat testfile
+	@echo $$(awk '$$2=="KO" {ko+=1} END {if (ko > 0) printf("----- KO: %d -----"), ko}' testfile)
+	@echo $$(awk '{total += $$1} END {printf("avg: %.2f"), total/NR}' testfile)
+	@echo $$(awk '{if (min=="") min=$$1} {if (min > $$1) min=$$1} END {printf("min: %d"), min}' testfile)
+	@echo $$(awk '{if (max=="") max=$$1} {if (max < $$1) max=$$1} END {printf("max: %d"), max}' testfile)
+	@echo $$(awk '$$2=="KO" {ko+=1} END {if (ko > 0) printf("----- KO: %d -----"), ko}' testfile)
 	@rm testfile
 
-.PHONY : all clean fclean re bonus test debug
+.PHONY : all clean fclean re bonus test debug benchmark
