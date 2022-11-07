@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/07 19:41:10 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/07 20:38:20 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,8 +78,8 @@ re:
 	make all
 
 debug:
-	make DEBUG='-g -fsanitize=address' re
-	make DEBUG='-g -fsanitize=address' $(CHECKER)
+	make DEBUG='-g3 -fsanitize=address' re
+	make DEBUG='-g3 -fsanitize=address' $(CHECKER)
 
 test: all bonus
 	@echo $(shell ARG=$$(seq $(SIZE) | sort -R | tr "\n" " "); ./push_swap $$ARG | wc -l; ./push_swap $$ARG | ./checker $$ARG; echo $$ARG;)

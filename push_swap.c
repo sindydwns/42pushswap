@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/07 20:21:12 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 20:37:17 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ int	main(int argc, char *argv[])
 	best_solution = lst_reduce(solutions, (t_cmp_f)find_best_solution, NULL);
 	if (best_solution)
 		ft_lstiter(best_solution->cmdlst, (t_action_1)print_cmd);
-	ft_lstclear(&inputs, NULL);
+	ft_lstclear(&inputs, free);
 	ft_lstclear(&solutions, (t_action_1)destroy_solution);
-	while (1)
-	{
-	}
 	return (0);
 }
