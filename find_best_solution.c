@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve_hardcode2.c                                  :+:      :+:    :+:   */
+/*   find_best_solution.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/07 10:56:17 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/07 14:43:12 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/07 14:47:24 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
 #include "push_swap.h"
 
-t_solution	*solve_hardcode2(t_solution *s)
+t_solution	*find_best_solution(t_solution *acc, t_list *cur)
 {
-	if (s->a->size < 2)
-		return (NULL);
-	if (atop(s, 0) > abot(s, 0))
-		sa(s);
-	return (s);
+	if (acc == NULL)
+		return ((t_solution *)cur->content);
+	if ((t_solution *)cur->content == NULL)
+		return (acc);
+	if (acc->cmdsize > ((t_solution *)cur->content)->cmdsize)
+		return ((t_solution *)cur->content);
+	return (acc);
 }

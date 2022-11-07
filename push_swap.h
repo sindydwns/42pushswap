@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/05 14:26:29 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 14:42:52 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ t_solution	*solve(t_list *intlst, t_solve_f func);
 t_dequeue	*create_dequeue(t_list *intlst);
 void		destroy_dequeue(t_dequeue *dq);
 
-t_solution	*solve_sandglass(t_solution *ps);
+t_solution	*solve_sandglass1(t_solution *ps);
+t_solution	*solve_sandglass2(t_solution *ps);
 t_solution	*solve_hardcode2(t_solution *ps);
 t_solution	*solve_hardcode3(t_solution *ps);
 t_solution	*solve_hardcode4(t_solution *ps);
@@ -85,6 +86,7 @@ void		enqueue(t_dequeue *dq, int edge, t_elem *new);
 t_elem		*dequeue(t_dequeue *dq, int edge);
 t_elem		*newelem(int rank);
 
+t_solution	*find_best_solution(t_solution *acc, t_list *cur);
 t_solution	*sa(t_solution *ps);
 t_solution	*sb(t_solution *ps);
 t_solution	*ss(t_solution *ps);
@@ -101,12 +103,12 @@ void		destroy_solution(t_solution *solution);
 int			is_sorted(t_solution *ps);
 
 /* data utils */
-int	atop(t_solution *s, size_t idx);
-int	abot(t_solution *s, size_t idx);
-int	btop(t_solution *s, size_t idx);
-int	bbot(t_solution *s, size_t idx);
-int	amax(t_solution *s);
-int	amin(t_solution *s);
-int	bmax(t_solution *s);
-int	bmin(t_solution *s);
+int			atop(t_solution *s, size_t idx);
+int			abot(t_solution *s, size_t idx);
+int			btop(t_solution *s, size_t idx);
+int			bbot(t_solution *s, size_t idx);
+int			amax(t_solution *s);
+int			amin(t_solution *s);
+int			bmax(t_solution *s);
+int			bmin(t_solution *s);
 #endif

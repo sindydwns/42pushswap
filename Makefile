@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/07 09:38:26 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/07 14:46:08 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ OBJS = \
 	instruction_swap.o \
 	instruction_rotate.o \
 	instruction_rrotate.o \
+	find_best_solution.o \
 	solve.o \
 	solve_sandglass.o \
 	solve_hardcode2.o \
@@ -80,7 +81,7 @@ debug:
 	make DEBUG='-g -fsanitize=address' $(CHECKER)
 
 test: all bonus
-	@echo $(shell ARG=$$(seq $(SIZE) | sort -R | tr "\n" " "); ./push_swap $$ARG | wc -l; ./push_swap $$ARG | ./checker $$ARG;)
+	@echo $(shell ARG=$$(seq $(SIZE) | sort -R | tr "\n" " "); ./push_swap $$ARG | wc -l; ./push_swap $$ARG | ./checker $$ARG; echo $$ARG;)
 
 benchmark: all bonus
 	@touch testfile

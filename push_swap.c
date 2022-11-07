@@ -3,27 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/07 02:21:55 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 14:57:37 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "error.h"
 #include "advlst.h"
-
-static t_solution	*find_best_solution(t_solution *acc, t_list *cur)
-{
-	if (acc == NULL)
-		return ((t_solution *)cur->content);
-	if ((t_solution *)cur->content == NULL)
-		return (acc);
-	if (acc->cmdsize > ((t_solution *)cur->content)->cmdsize)
-		return ((t_solution *)cur->content);
-	return (acc);
-}
 
 static void	print_cmd(char *cmd)
 {
@@ -50,11 +39,8 @@ static t_list	*solve_all(const t_solve_f *algorithms, t_list *inputs)
 int	main(int argc, char *argv[])
 {
 	const t_solve_f	algorithms[] = {
-		solve_sandglass,
-		solve_hardcode2,
-		solve_hardcode3,
-		solve_hardcode4,
-		solve_hardcode5,
+		solve_hardcode2, solve_hardcode3, solve_hardcode4, solve_hardcode5,
+		solve_sandglass1, solve_sandglass2,
 		NULL
 	};
 	t_list			*inputs;
@@ -64,6 +50,8 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		return (0);
 	inputs = ranking(parse_integer(argc - 1, argv + 1));
+	if (inputs == NULL)
+		error(ERR_NOT_DEFINE_CASE, FORCE_EXIT);
 	solutions = solve_all(algorithms, inputs);
 	best_solution = lst_reduce(solutions, (t_cmp_f)find_best_solution, NULL);
 	if (best_solution)

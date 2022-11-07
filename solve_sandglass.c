@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 17:09:31 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 12:43:21 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,47 +38,66 @@ static int	get_direction(t_dequeue *dq, int find)
 		return (-distance);
 }
 
-static void	a_to_b(t_solution *solution)
+static void	a_to_b(t_solution *s, int mod)
 {
 	int	chunk;
 	int	i;
 
-	chunk = 30;
+	chunk = 15;
 	i = 1;
-	while (solution->a->size > 0)
+	while (s->a->size > 0)
 	{
-		if (solution->a->p[TOP]->rank < i + chunk)
+		if (atop(s, 0) < i + chunk)
 		{
-			pb(solution);
-			if (solution->b->p[TOP]->rank < i)
-				rb(solution);
+			pb(s);
+			if (btop(s, 0) < i)
+				rb(s);
 			i++;
 		}
 		else
 		{
-			ra(solution);
-		}
-	}
-}
-
-static void	b_to_a(t_solution *solution)
-{
-	while (solution->b->size != 0)
-	{
-		while (solution->b->p[TOP]->rank != (int)solution->b->size)
-		{
-			if (get_direction(solution->b, solution->b->size) > 0)
-				rb(solution);
+			if (mod && s->a->size < s->b->size)
+				rra(s);
 			else
-				rrb(solution);
+				ra(s);
 		}
-		pa(solution);
 	}
 }
 
-t_solution	*solve_sandglass(t_solution *solution)
+static void	b_to_a(t_solution *s)
 {
-	a_to_b(solution);
-	b_to_a(solution);
-	return (solution);
+	int	max;
+	int	distance;
+
+	while (s->b->size != 0)
+	{
+		max = bmax(s);
+		while (btop(s, 0) != max)
+		{
+			if (btop(s, 0) == max - 1)
+				pa(s);
+			distance = get_direction(s->b, max);
+			if (distance > 0)
+				rb(s);
+			else if (distance < 0)
+				rrb(s);
+		}
+		pa(s);
+		if (s->a->size >= 2 && atop(s, 1) < atop(s, 0))
+			sa(s);
+	}
+}
+
+t_solution	*solve_sandglass1(t_solution *s)
+{
+	a_to_b(s, FALSE);
+	b_to_a(s);
+	return (s);
+}
+
+t_solution	*solve_sandglass2(t_solution *s)
+{
+	a_to_b(s, TRUE);
+	b_to_a(s);
+	return (s);
 }
