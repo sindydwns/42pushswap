@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/07 12:43:21 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 20:18:39 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,36 +38,37 @@ static int	get_direction(t_dequeue *dq, int find)
 		return (-distance);
 }
 
-static void	a_to_b(t_solution *s, int mod)
+static void	a_to_b(t_solution *s, int chunk)
 {
-	int	chunk;
 	int	i;
 
-	chunk = 15;
 	i = 1;
 	while (s->a->size > 0)
 	{
-		if (atop(s, 0) < i + chunk)
+		chunk = s->a->size / 4;
+		if (atop(s, 0) <= i + chunk)
 		{
 			pb(s);
-			if (btop(s, 0) < i)
+			if (btop(s, 0) <= i)
+				rb(s);
+			i++;
+		}
+		else if (abot(s, 0) <= i + chunk)
+		{
+			rra(s)->pb(s);
+			if (btop(s, 0) <= i)
 				rb(s);
 			i++;
 		}
 		else
-		{
-			if (mod && s->a->size < s->b->size)
-				rra(s);
-			else
-				ra(s);
-		}
+			ra(s);
 	}
 }
 
 static void	b_to_a(t_solution *s)
 {
 	int	max;
-	int	distance;
+	int	direction;
 
 	while (s->b->size != 0)
 	{
@@ -76,10 +77,10 @@ static void	b_to_a(t_solution *s)
 		{
 			if (btop(s, 0) == max - 1)
 				pa(s);
-			distance = get_direction(s->b, max);
-			if (distance > 0)
+			direction = get_direction(s->b, max);
+			if (direction > 0)
 				rb(s);
-			else if (distance < 0)
+			else if (direction < 0)
 				rrb(s);
 		}
 		pa(s);
@@ -88,16 +89,27 @@ static void	b_to_a(t_solution *s)
 	}
 }
 
-t_solution	*solve_sandglass1(t_solution *s)
+t_solution	*solve_sandglass(t_solution *s)
 {
-	a_to_b(s, FALSE);
-	b_to_a(s);
-	return (s);
-}
+	t_solution	*copied;
+	int			chunk;
+	size_t		cmdsize;
 
-t_solution	*solve_sandglass2(t_solution *s)
-{
-	a_to_b(s, TRUE);
+	copied = create_solution(copy_dequeue(s->a), copy_dequeue(s->b));
+	chunk = 0;
+	a_to_b(copied, chunk);
+	b_to_a(copied);
+	cmdsize = 9999999;
+	while (cmdsize > copied->cmdsize)
+	{
+		destroy_solution(copied);
+		copied = create_solution(copy_dequeue(s->a), copy_dequeue(s->b));
+		a_to_b(copied, ++chunk);
+		b_to_a(copied);
+		cmdsize = copied->cmdsize;
+	}
+	destroy_solution(copied);
+	a_to_b(s, --chunk);
 	b_to_a(s);
 	return (s);
 }

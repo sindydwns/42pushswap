@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/07 14:42:52 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 19:41:42 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ t_list		*parse_integer(int str_cnt, char *strs[]);
 t_list		*ranking(t_list *intlst);
 t_solution	*solve(t_list *intlst, t_solve_f func);
 t_dequeue	*create_dequeue(t_list *intlst);
+t_dequeue	*copy_dequeue(t_dequeue *dq);
 void		destroy_dequeue(t_dequeue *dq);
 
-t_solution	*solve_sandglass1(t_solution *ps);
-t_solution	*solve_sandglass2(t_solution *ps);
+t_solution	*solve_sandglass(t_solution *ps);
 t_solution	*solve_hardcode2(t_solution *ps);
 t_solution	*solve_hardcode3(t_solution *ps);
 t_solution	*solve_hardcode4(t_solution *ps);

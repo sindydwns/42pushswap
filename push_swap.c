@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/07 14:57:37 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 20:21:12 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char *argv[])
 {
 	const t_solve_f	algorithms[] = {
 		solve_hardcode2, solve_hardcode3, solve_hardcode4, solve_hardcode5,
-		solve_sandglass1, solve_sandglass2,
+		solve_sandglass,
 		NULL
 	};
 	t_list			*inputs;
@@ -58,5 +58,8 @@ int	main(int argc, char *argv[])
 		ft_lstiter(best_solution->cmdlst, (t_action_1)print_cmd);
 	ft_lstclear(&inputs, NULL);
 	ft_lstclear(&solutions, (t_action_1)destroy_solution);
+	while (1)
+	{
+	}
 	return (0);
 }

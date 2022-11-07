@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/07 14:46:08 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/07 19:41:10 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 OBJS = \
 	dequeue.o \
 	create_dequeue.o \
+	copy_dequeue.o \
 	destroy_dequeue.o \
 	parse_integer.o \
 	ranking.o \
