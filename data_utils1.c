@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 13:26:08 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/05 14:27:25 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 21:56:11 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	atop(t_solution *s, size_t idx)
 int	abot(t_solution *s, size_t idx)
 {
 	t_elem	*e;
-	
+
 	if (s->a->size <= idx)
 		return (FT_ERROR);
 	e = s->a->p[BOTTOM];
@@ -39,7 +39,7 @@ int	abot(t_solution *s, size_t idx)
 int	btop(t_solution *s, size_t idx)
 {
 	t_elem	*e;
-	
+
 	if (s->b->size <= idx)
 		return (FT_ERROR);
 	e = s->b->p[TOP];
@@ -51,7 +51,7 @@ int	btop(t_solution *s, size_t idx)
 int	bbot(t_solution *s, size_t idx)
 {
 	t_elem	*e;
-	
+
 	if (s->b->size <= idx)
 		return (FT_ERROR);
 	e = s->b->p[BOTTOM];
@@ -59,5 +59,3 @@ int	bbot(t_solution *s, size_t idx)
 		e = e->up;
 	return (e->rank);
 }
-
-

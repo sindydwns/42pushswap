@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/07 20:39:03 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/07 21:52:48 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	a_to_b(t_solution *s, int chunk)
 	i = 1;
 	while (s->a->size > 0)
 	{
-		chunk = s->a->size / 4;
 		if (atop(s, 0) <= i + chunk)
 		{
 			pb(s);
@@ -102,14 +101,17 @@ t_solution	*solve_sandglass(t_solution *s)
 	cmdsize = 9999999;
 	while (cmdsize > copied->cmdsize)
 	{
+		cmdsize = copied->cmdsize;
 		destroy_solution(copied);
 		copied = create_solution(copy_dequeue(s->a), copy_dequeue(s->b));
-		a_to_b(copied, ++chunk);
+		chunk += 10;
+		a_to_b(copied, chunk);
 		b_to_a(copied);
-		cmdsize = copied->cmdsize;
+		if (chunk > (int)copied->elemsize)
+			break ;
 	}
 	destroy_solution(copied);
-	a_to_b(s, --chunk);
+	a_to_b(s, chunk - 10);
 	b_to_a(s);
 	return (s);
 }
