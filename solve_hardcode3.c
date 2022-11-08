@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/05 14:25:20 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/08 23:54:29 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_solution	*solve_hardcode3(t_solution *s)
 
 	if (s->a->size != 3)
 		return (NULL);
-	max = amax(s);
+	max = amax(s)->rank;
 	if (atop(s, 0) == max)
 		ra(s);
 	if (atop(s, 1) == max)

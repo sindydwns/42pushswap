@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:56:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/08 23:28:52 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/08 23:54:17 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "mymath.h"
 #include "solve_greedy.h"
 
-static t_greedy_cost	*create_greedy(t_solution *s, t_elem *eb, int amax)
+static t_greedy_cost	*create_greedy(t_solution *s, t_elem *eb, t_elem *amax)
 {
 	t_elem			*ea;
 	t_greedy_cost	*gc;
@@ -28,9 +28,9 @@ static t_greedy_cost	*create_greedy(t_solution *s, t_elem *eb, int amax)
 	gc->ea = ea;
 	while (ea)
 	{
-		if (amax > eb->rank && ea->rank > eb->rank && ea->rank < gc->ea->rank)
+		if (amax->rank > eb->rank && ea->rank > eb->rank && ea->rank < gc->ea->rank)
 			gc->ea = ea;
-		if (amax < eb->rank && ea->rank < gc->ea->rank)
+		if (amax->rank < eb->rank && ea->rank < gc->ea->rank)
 			gc->ea = ea;
 		ea = ea->down;
 	}
@@ -91,7 +91,7 @@ t_solution	*solve_greedy(t_solution *s)
 		pa(s);
 		free(gc);
 	}
-	while (atop(s, 0) != amin(s))
+	while (atop(s, 0) != amin(s)->rank)
 		ra(s);
 	return (s);
 }

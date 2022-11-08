@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve_sandglass.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/07 21:52:48 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/08 23:55:02 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	b_to_a(t_solution *s)
 
 	while (s->b->size != 0)
 	{
-		max = bmax(s);
+		max = bmax(s)->rank;
 		while (btop(s, 0) != max)
 		{
 			if (btop(s, 0) == max - 1)

@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/08 22:37:12 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/08 23:53:02 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ int			atop(t_solution *s, size_t idx);
 int			abot(t_solution *s, size_t idx);
 int			btop(t_solution *s, size_t idx);
 int			bbot(t_solution *s, size_t idx);
-int			amax(t_solution *s);
-int			amin(t_solution *s);
-int			bmax(t_solution *s);
-int			bmin(t_solution *s);
+t_elem		*amax(t_solution *s);
+t_elem		*amin(t_solution *s);
+t_elem		*bmax(t_solution *s);
+t_elem		*bmin(t_solution *s);
 #endif
