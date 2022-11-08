@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:56:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/09 00:00:00 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/09 01:49:03 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "mymath.h"
 #include "solve_greedy.h"
 
-static t_greedy_cost	*create_greedy(t_solution *s, t_elem *eb, t_elem *amax)
+static t_greedy_cost	*create_greedy(t_solution *s, t_elem *eb)
 {
 	t_elem			*ea;
 	t_greedy_cost	*gc;
@@ -25,25 +25,24 @@ static t_greedy_cost	*create_greedy(t_solution *s, t_elem *eb, t_elem *amax)
 		error(ERR_MALLOC, FORCE_EXIT);
 	gc->eb = eb;
 	ea = s->a->p[GTOP];
-	gc->ea = ea;
+	gc->ea = amax(s);
 	while (ea)
 	{
-		if (amax->rank > eb->rank && ea->rank > eb->rank && ea->rank < gc->ea->rank)
-			gc->ea = ea;
-		if (amax->rank < eb->rank && ea->rank < gc->ea->rank)
+		if (ea->rank > eb->rank && ea->rank < gc->ea->rank)
 			gc->ea = ea;
 		ea = ea->down;
 	}
-	gc->cache[GRA] = elemcnt(gc->ea, GTOP);
-	gc->cache[GRB] = elemcnt(gc->eb, GTOP);
-	gc->cache[GRRA] = elemcnt(gc->ea, GBOT) + 1;
-	gc->cache[GRRB] = elemcnt(gc->eb, GBOT) + 1;
+	if (gc->ea && gc->ea->rank < eb->rank)
+		gc->ea = amin(s);
+	gc->n[GRA] = elemcnt(gc->ea, GTOP);
+	gc->n[GRB] = elemcnt(gc->eb, GTOP);
+	gc->n[GRRA] = elemcnt(gc->ea, GBOT) + 1;
+	gc->n[GRRB] = elemcnt(gc->eb, GBOT) + 1;
 	return (gc);
 }
 
 static t_greedy_cost	*get_best_gc(t_solution *s)
 {
-	const int		a_max = amax(s);
 	t_greedy_cost	*res;
 	t_greedy_cost	*gc;
 	t_elem			*elem;
@@ -52,12 +51,12 @@ static t_greedy_cost	*get_best_gc(t_solution *s)
 	elem = s->b->p[GBOT];
 	while (elem)
 	{
-		gc = create_greedy(s, elem, a_max);
-		gc->cnt[GRA_RB] = max(gc->cache[GRA], gc->cache[GRB]);
-		gc->cnt[GRA_RRB] = gc->cache[GRA] + gc->cache[GRRB];
-		gc->cnt[GRRA_RB] = gc->cache[GRRA] + gc->cache[GRB];
-		gc->cnt[GRRA_RRB] = max(gc->cache[GRRA], gc->cache[GRRB]);
-		gc->best = *arr_min(gc->cnt, 4);
+		gc = create_greedy(s, elem);
+		gc->mth[GRA_RB] = max(gc->n[GRA], gc->n[GRB]);
+		gc->mth[GRA_RRB] = gc->n[GRA] + gc->n[GRRB];
+		gc->mth[GRRA_RB] = gc->n[GRRA] + gc->n[GRB];
+		gc->mth[GRRA_RRB] = max(gc->n[GRRA], gc->n[GRRB]);
+		gc->best = *arr_min(gc->mth, 4);
 		if (res == NULL || res->best > gc->best)
 		{
 			free(res);
@@ -72,10 +71,31 @@ static t_greedy_cost	*get_best_gc(t_solution *s)
 
 static void	greedy_rotate(t_solution *s, t_greedy_cost *gc)
 {
-	while (s->a->p[TOP] != gc->ea)
-		ra(s);
-	while (s->b->p[TOP] != gc->eb)
-		rb(s);
+	gc->best_mth = GRA_RB;
+	if (gc->best == gc->mth[GRA_RRB])
+		gc->best_mth = GRA_RRB;
+	if (gc->best == gc->mth[GRRA_RB])
+		gc->best_mth = GRRA_RB;
+	if (gc->best == gc->mth[GRRA_RRB])
+		gc->best_mth = GRRA_RRB;
+	if (gc->best_mth == GRA_RB)
+		while (gc->n[GRB] > 0 && gc->n[GRA]-- > 0 && gc->n[GRB]--)
+			rr(s);
+	if (gc->best_mth == GRRA_RRB)
+		while (gc->n[GRRB] > 0 && gc->n[GRRA]-- > 0 && gc->n[GRRB]--)
+			rrr(s);
+	if (gc->best_mth == GRA_RB || gc->best_mth == GRA_RRB)
+		while (gc->n[GRA]-- > 0)
+			ra(s);
+	if (gc->best_mth == GRA_RB || gc->best_mth == GRRA_RB)
+		while (gc->n[GRB]-- > 0)
+			rb(s);
+	if (gc->best_mth == GRA_RRB || gc->best_mth == GRRA_RRB)
+		while (gc->n[GRRB]-- > 0)
+			rrb(s);
+	if (gc->best_mth == GRRA_RB || gc->best_mth == GRRA_RRB)
+		while (gc->n[GRRA]-- > 0)
+			rra(s);
 }
 
 t_solution	*solve_greedy(t_solution *s)

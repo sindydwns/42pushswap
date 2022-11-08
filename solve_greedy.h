@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:59:47 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/08 22:36:52 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/09 01:19:01 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@
 
 typedef struct s_greedy_cost
 {
-	int		cnt[4];
-	int		cache[4];
+	int		mth[4];
+	int		n[4];
 	int		best;
+	int		best_mth;
 	t_elem	*ea;
 	t_elem	*eb;
 }	t_greedy_cost;
