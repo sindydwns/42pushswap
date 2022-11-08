@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:08:11 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/08 23:23:39 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/09 01:57:16 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_solution	*solve(t_list *intlst, t_solve_f solve_func)
 	res = create_solution(create_dequeue(intlst), create_dequeue(NULL));
 	if (is_sorted(res))
 		return (res);
-	if (solve_func(res) == NULL)
+	if (solve_func(res) == NULL || is_sorted(res) == FALSE)
 	{
 		destroy_solution(res);
 		return (NULL);
