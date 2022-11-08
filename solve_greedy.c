@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:56:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/08 23:54:17 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/09 00:00:00 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_solution	*solve_greedy(t_solution *s)
 		pa(s);
 		free(gc);
 	}
-	while (atop(s, 0) != amin(s)->rank)
+	while (atop(s, 0)->rank != amin(s)->rank)
 		ra(s);
 	return (s);
 }

@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/08 23:53:02 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/08 23:56:31 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,10 @@ void		destroy_solution(t_solution *solution);
 int			is_sorted(t_solution *ps);
 
 /* data utils */
-int			atop(t_solution *s, size_t idx);
-int			abot(t_solution *s, size_t idx);
-int			btop(t_solution *s, size_t idx);
-int			bbot(t_solution *s, size_t idx);
+t_elem		*atop(t_solution *s, size_t idx);
+t_elem		*abot(t_solution *s, size_t idx);
+t_elem		*btop(t_solution *s, size_t idx);
+t_elem		*bbot(t_solution *s, size_t idx);
 t_elem		*amax(t_solution *s);
 t_elem		*amin(t_solution *s);
 t_elem		*bmax(t_solution *s);

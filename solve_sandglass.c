@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/08 23:55:02 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/09 00:02:06 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ static void	a_to_b(t_solution *s, int chunk)
 	i = 1;
 	while (s->a->size > 0)
 	{
-		if (atop(s, 0) <= i + chunk)
+		if (atop(s, 0)->rank <= i + chunk)
 		{
 			pb(s);
-			if (btop(s, 0) <= i)
+			if (btop(s, 0)->rank <= i)
 				rb(s);
 			i++;
 		}
-		else if (abot(s, 0) <= i + chunk)
+		else if (abot(s, 0)->rank <= i + chunk)
 		{
 			rra(s)->pb(s);
-			if (btop(s, 0) <= i)
+			if (btop(s, 0)->rank <= i)
 				rb(s);
 			i++;
 		}
@@ -72,9 +72,9 @@ static void	b_to_a(t_solution *s)
 	while (s->b->size != 0)
 	{
 		max = bmax(s)->rank;
-		while (btop(s, 0) != max)
+		while (btop(s, 0)->rank != max)
 		{
-			if (btop(s, 0) == max - 1)
+			if (btop(s, 0)->rank == max - 1)
 				pa(s);
 			direction = get_direction(s->b, max);
 			if (direction > 0)
@@ -83,7 +83,7 @@ static void	b_to_a(t_solution *s)
 				rrb(s);
 		}
 		pa(s);
-		if (s->a->size >= 2 && atop(s, 1) < atop(s, 0))
+		if (s->a->size >= 2 && atop(s, 1)->rank < atop(s, 0)->rank)
 			sa(s);
 	}
 }

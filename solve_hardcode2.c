@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve_hardcode2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:37 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/07 10:56:17 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/09 00:00:17 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_solution	*solve_hardcode2(t_solution *s)
 {
 	if (s->a->size < 2)
 		return (NULL);
-	if (atop(s, 0) > abot(s, 0))
+	if (atop(s, 0)->rank > abot(s, 0)->rank)
 		sa(s);
 	return (s);
 }
