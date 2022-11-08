@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve.c                                            :+:      :+:    :+:   */
+/*   mymath.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 17:08:11 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/08 23:23:39 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/08 19:04:57 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/08 19:38:01 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
-#include "push_swap.h"
+#ifndef MYMATH_H
+# define MYMATH_H
 
-t_solution	*solve(t_list *intlst, t_solve_f solve_func)
-{
-	t_solution	*res;
+int	max(int a, int b);
+int	*arr_max(int *arr, int len);
+int	min(int a, int b);
+int	*arr_min(int *arr, int len);
+int	abs(int a);
 
-	if (solve_func == NULL)
-		return (NULL);
-	res = create_solution(create_dequeue(intlst), create_dequeue(NULL));
-	if (is_sorted(res))
-		return (res);
-	if (solve_func(res) == NULL)
-	{
-		destroy_solution(res);
-		return (NULL);
-	}
-	return (res);
-}
+#endif

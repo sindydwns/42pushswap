@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 14:29:59 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/04 14:36:38 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/08 19:33:50 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,13 +78,21 @@ ADVLST = \
 	./advlst/lstb_reduce.o \
 	./advlst/lst_reduce.o \
 
+MATH = \
+	./math/max.o \
+	./math/arr_max.o \
+	./math/min.o \
+	./math/arr_min.o \
+	./math/abs.o \
+
 HEADER = \
 	-I./libft/ \
 	-I./get_next_line/ \
 	-I./advlst/ \
 	-I./error/ \
+	-I./math/ \
 
-OBJECTS = $(LIBFT) $(GNL) $(EXIT) $(ADVLST)
+OBJECTS = $(LIBFT) $(GNL) $(EXIT) $(ADVLST) $(MATH)
 
 all: $(NAME)
 

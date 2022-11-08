@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dequeue.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:09 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/04 01:53:26 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/08 22:05:22 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,26 @@ t_elem	*dequeue(t_dequeue *dq, int edge)
 	result->down = NULL;
 	result->up = NULL;
 	return (result);
+}
+
+int	elemcnt(t_elem *elem, int direction)
+{
+	int	cnt;
+
+	cnt = 0;
+	if (elem == NULL)
+		return (cnt);
+	while (direction == TOP && elem->up)
+	{
+		cnt++;
+		elem = elem->up;
+	}
+	while (direction == BOTTOM && elem->down)
+	{
+		cnt++;
+		elem = elem->down;
+	}
+	return (cnt);
 }
 
 t_elem	*newelem(int rank)

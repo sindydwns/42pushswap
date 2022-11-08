@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/07 20:37:17 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/08 22:37:43 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ static t_list	*solve_all(const t_solve_f *algorithms, t_list *inputs)
 int	main(int argc, char *argv[])
 {
 	const t_solve_f	algorithms[] = {
-		solve_hardcode2, solve_hardcode3, solve_hardcode4, solve_hardcode5,
-		solve_sandglass,
+		// solve_hardcode2, solve_hardcode3, solve_hardcode4, solve_hardcode5,
+		// solve_sandglass,
+		solve_greedy,
 		NULL
 	};
 	t_list			*inputs;

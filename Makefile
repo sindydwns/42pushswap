@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/07 21:26:05 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/08 22:32:43 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ OBJS = \
 	find_best_solution.o \
 	solve.o \
 	solve_sandglass.o \
+	solve_greedy.o \
 	solve_hardcode2.o \
 	solve_hardcode3.o \
 	solve_hardcode4.o \
@@ -46,6 +47,7 @@ INCLUDE = \
 	-I./lib/get_next_line/ \
 	-I./lib/advlst/ \
 	-I./lib/exit/ \
+	-I./lib/math/ \
 
 all: $(PUSHSWAP)
 

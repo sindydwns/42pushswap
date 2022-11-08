@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve.c                                            :+:      :+:    :+:   */
+/*   solve_greedy.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 17:08:11 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/08 23:23:39 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/07 22:59:47 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/08 22:36:52 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
-#include "push_swap.h"
+#ifndef SOLVE_GREEDY_H
+# define SOLVE_GREEDY_H
+# define GRA 0
+# define GRB 1
+# define GRRA 2
+# define GRRB 3
+# define GRA_RB 0
+# define GRA_RRB 1
+# define GRRA_RB 2
+# define GRRA_RRB 3
+# define GTOP 0
+# define GBOT 1
+# include "push_swap.h"
 
-t_solution	*solve(t_list *intlst, t_solve_f solve_func)
+typedef struct s_greedy_cost
 {
-	t_solution	*res;
+	int		cnt[4];
+	int		cache[4];
+	int		best;
+	t_elem	*ea;
+	t_elem	*eb;
+}	t_greedy_cost;
 
-	if (solve_func == NULL)
-		return (NULL);
-	res = create_solution(create_dequeue(intlst), create_dequeue(NULL));
-	if (is_sorted(res))
-		return (res);
-	if (solve_func(res) == NULL)
-	{
-		destroy_solution(res);
-		return (NULL);
-	}
-	return (res);
-}
+#endif

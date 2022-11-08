@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/07 19:41:42 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/08 22:37:12 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ t_dequeue	*create_dequeue(t_list *intlst);
 t_dequeue	*copy_dequeue(t_dequeue *dq);
 void		destroy_dequeue(t_dequeue *dq);
 
+t_solution	*solve_greedy(t_solution *ps);
 t_solution	*solve_sandglass(t_solution *ps);
 t_solution	*solve_hardcode2(t_solution *ps);
 t_solution	*solve_hardcode3(t_solution *ps);
@@ -85,6 +86,7 @@ t_solution	*solve_hardcode5(t_solution *ps);
 void		enqueue(t_dequeue *dq, int edge, t_elem *new);
 t_elem		*dequeue(t_dequeue *dq, int edge);
 t_elem		*newelem(int rank);
+int			elemcnt(t_elem *elem, int direction);
 
 t_solution	*find_best_solution(t_solution *acc, t_list *cur);
 t_solution	*sa(t_solution *ps);
