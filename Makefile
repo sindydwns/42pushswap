@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/09 15:47:23 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/09 15:55:10 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ re:
 	make all
 
 debug:
-	make DEBUG='-g3 -fsanitize=address' re
+	make DEBUG='-g3 -fsanitize=address' $(PUSHSWAP)
 	make DEBUG='-g3 -fsanitize=address' $(CHECKER)
 
 test: all bonus
