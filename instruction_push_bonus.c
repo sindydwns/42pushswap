@@ -1,48 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instruction_rrotate.c                              :+:      :+:    :+:   */
+/*   instruction_push_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 17:07:23 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/09 15:52:08 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/01 17:07:18 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/09 15:51:41 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-static void	rrotate(t_dequeue *dq)
+static void	push(t_dequeue *from, t_dequeue *to)
 {
 	t_elem	*elem;
 
-	if (dq == NULL || dq->size <= 1)
+	if (from == NULL || from->size == 0)
 		return ;
-	elem = dequeue(dq, BOTTOM);
-	enqueue(dq, TOP, elem);
+	elem = dequeue(from, TOP);
+	enqueue(to, TOP, elem);
 }
 
-t_solution	*rra(t_solution *ps)
+t_solution	*pa(t_solution *ps)
 {
-	rrotate(ps->a);
-	ft_lstadd_back(&(ps->cmdlst), ft_lstnew(RRA));
+	push(ps->b, ps->a);
+	ft_lstadd_back(&(ps->cmdlst), ft_lstnew(PA));
 	ps->cmdsize++;
 	return (ps);
 }
 
-t_solution	*rrb(t_solution *ps)
+t_solution	*pb(t_solution *ps)
 {
-	rrotate(ps->b);
-	ft_lstadd_back(&(ps->cmdlst), ft_lstnew(RRB));
-	ps->cmdsize++;
-	return (ps);
-}
-
-t_solution	*rrr(t_solution *ps)
-{
-	rrotate(ps->a);
-	rrotate(ps->b);
-	ft_lstadd_back(&(ps->cmdlst), ft_lstnew(RRR));
+	push(ps->a, ps->b);
+	ft_lstadd_back(&(ps->cmdlst), ft_lstnew(PB));
 	ps->cmdsize++;
 	return (ps);
 }

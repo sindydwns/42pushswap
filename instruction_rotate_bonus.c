@@ -1,48 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instruction_rrotate.c                              :+:      :+:    :+:   */
+/*   instruction_rotate_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 17:07:23 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/09 15:52:08 by yonshin          ###   ########.fr       */
+/*   Created: 2022/11/01 17:07:20 by yonshin           #+#    #+#             */
+/*   Updated: 2022/11/09 15:51:53 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-static void	rrotate(t_dequeue *dq)
+static void	rotate(t_dequeue *dq)
 {
 	t_elem	*elem;
 
 	if (dq == NULL || dq->size <= 1)
 		return ;
-	elem = dequeue(dq, BOTTOM);
-	enqueue(dq, TOP, elem);
+	elem = dequeue(dq, TOP);
+	enqueue(dq, BOTTOM, elem);
 }
 
-t_solution	*rra(t_solution *ps)
+t_solution	*ra(t_solution *ps)
 {
-	rrotate(ps->a);
-	ft_lstadd_back(&(ps->cmdlst), ft_lstnew(RRA));
+	rotate(ps->a);
+	ft_lstadd_back(&(ps->cmdlst), ft_lstnew(RA));
 	ps->cmdsize++;
 	return (ps);
 }
 
-t_solution	*rrb(t_solution *ps)
+t_solution	*rb(t_solution *ps)
 {
-	rrotate(ps->b);
-	ft_lstadd_back(&(ps->cmdlst), ft_lstnew(RRB));
+	rotate(ps->b);
+	ft_lstadd_back(&(ps->cmdlst), ft_lstnew(RB));
 	ps->cmdsize++;
 	return (ps);
 }
 
-t_solution	*rrr(t_solution *ps)
+t_solution	*rr(t_solution *ps)
 {
-	rrotate(ps->a);
-	rrotate(ps->b);
-	ft_lstadd_back(&(ps->cmdlst), ft_lstnew(RRR));
+	rotate(ps->a);
+	rotate(ps->b);
+	ft_lstadd_back(&(ps->cmdlst), ft_lstnew(RR));
 	ps->cmdsize++;
 	return (ps);
 }

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   instruction_push.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:18 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 17:19:56 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/09 15:51:17 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	push(t_dequeue *from, t_dequeue *to)

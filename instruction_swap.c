@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   instruction_swap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:24 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 17:20:39 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/09 15:52:18 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	swap(t_dequeue *dq)

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   instruction_rotate.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonshin <yonshin@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:20 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/01 17:20:15 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/09 15:51:56 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	rotate(t_dequeue *dq)

@@ -6,24 +6,24 @@
 #    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/09 15:33:09 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/09 15:47:23 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PUSHSWAP = push_swap
 CHECKER = checker
 CFLAGS = -Wall -Wextra -Werror
-OBJS = \
-	dequeue.o \
-	create_dequeue.o \
-	copy_dequeue.o \
-	destroy_dequeue.o \
-	parse_integer.o \
-	ranking.o \
+PUSHSWAP_OBJS = \
+	push_swap.o \
 	instruction_push.o \
 	instruction_swap.o \
 	instruction_rotate.o \
 	instruction_rrotate.o \
+	is_sorted.o \
+	dequeue.o \
+	create_dequeue.o \
+	create_solution.o \
+	parse_integer.o \
 	solve.o \
 	solve_sandglass.o \
 	solve_greedy.o \
@@ -31,14 +31,25 @@ OBJS = \
 	solve_hardcode3.o \
 	solve_hardcode4.o \
 	solve_hardcode5.o \
-	create_solution.o \
-	destroy_solution.o \
-	is_sorted.o \
 	data_utils1.o \
 	data_utils2.o \
+	copy_dequeue.o \
+	ranking.o \
+	destroy_solution.o \
+	destroy_dequeue.o \
+
+CHECKER_OBJS = \
+	checker_bonus.o \
+	instruction_push_bonus.o \
+	instruction_swap_bonus.o \
+	instruction_rotate_bonus.o \
+	instruction_rrotate_bonus.o \
+	is_sorted_bonus.o \
+	dequeue_bonus.o \
+	create_dequeue_bonus.o \
+	create_solution_bonus.o \
+	parse_integer_bonus.o \
 	
-PUSHSWAP_OBJS = $(OBJS) push_swap.o
-CHECKER_OBJS = $(OBJS) checker.o
 LIB = ./lib/liball.a
 
 INCLUDE = \
