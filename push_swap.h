@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:46 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/08 23:56:31 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/09 15:33:27 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ t_elem		*dequeue(t_dequeue *dq, int edge);
 t_elem		*newelem(int rank);
 int			elemcnt(t_elem *elem, int direction);
 
-t_solution	*find_best_solution(t_solution *acc, t_list *cur);
 t_solution	*sa(t_solution *ps);
 t_solution	*sb(t_solution *ps);
 t_solution	*ss(t_solution *ps);

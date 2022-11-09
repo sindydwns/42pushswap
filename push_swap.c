@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:07:30 by yonshin           #+#    #+#             */
-/*   Updated: 2022/11/09 02:15:21 by yonshin          ###   ########.fr       */
+/*   Updated: 2022/11/09 15:32:50 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,23 @@ static t_list	*solve_all(const t_solve_f *algorithms, t_list *inputs)
 	return (solutions);
 }
 
+static t_solution	*find_best_solution(t_solution *acc, t_list *cur)
+{
+	if (acc == NULL)
+		return ((t_solution *)cur->content);
+	if ((t_solution *)cur->content == NULL)
+		return (acc);
+	if (acc->cmdsize > ((t_solution *)cur->content)->cmdsize)
+		return ((t_solution *)cur->content);
+	return (acc);
+}
+
 int	main(int argc, char *argv[])
 {
 	const t_solve_f	algorithms[] = {
 		solve_hardcode2, solve_hardcode3, solve_hardcode4, solve_hardcode5,
 		solve_sandglass,
-		// solve_greedy,
+		solve_greedy,
 		NULL
 	};
 	t_list			*inputs;

@@ -6,7 +6,7 @@
 #    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:06:28 by yonshin           #+#    #+#              #
-#    Updated: 2022/11/08 22:32:43 by yonshin          ###   ########.fr        #
+#    Updated: 2022/11/09 15:33:09 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ OBJS = \
 	instruction_swap.o \
 	instruction_rotate.o \
 	instruction_rrotate.o \
-	find_best_solution.o \
 	solve.o \
 	solve_sandglass.o \
 	solve_greedy.o \
